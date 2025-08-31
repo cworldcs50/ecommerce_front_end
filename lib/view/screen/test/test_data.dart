@@ -23,6 +23,8 @@ class TestData extends StatelessWidget {
                 itemCount: controller.data.length,
                 itemBuilder: (context, index) => Text("${controller.data}"),
               );
+            case RequestStatus.noData:
+              return const Center(child: Text("No Data Available!"));
             case RequestStatus.serverFailure:
               return const Center(
                 child: Text(
