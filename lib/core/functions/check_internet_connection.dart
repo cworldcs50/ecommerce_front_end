@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'dart:developer';
 
-Future<bool> checkInternetConnectivity() async {
+Future<bool> checkInternetConnection() async {
   try {
     List<InternetAddress> result = await InternetAddress.lookup("google.com");
 

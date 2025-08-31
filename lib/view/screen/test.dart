@@ -1,6 +1,6 @@
 import 'dart:developer';
 import 'package:flutter/material.dart';
-import '../../core/functions/check_internet_connectivity.dart';
+import '../../core/functions/check_internet_connection.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 
 class Test extends StatelessWidget {
@@ -25,7 +25,7 @@ class Test extends StatelessWidget {
               borderColor: const Color(0xFF512DA8),
               borderRadius: BorderRadius.circular(10),
               onSubmit: (String verificationCode) async {
-                bool res = await checkInternetConnectivity();
+                bool res = await checkInternetConnection();
                 log("$res");
                 showDialog(
                   // ignore: use_build_context_synchronously
