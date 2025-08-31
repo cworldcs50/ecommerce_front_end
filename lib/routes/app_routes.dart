@@ -2,7 +2,7 @@ import 'package:get/get.dart';
 import '../view/screen/test/test.dart';
 import '../view/screen/language.dart';
 import 'package:flutter/cupertino.dart';
-import '../view/screen/test/test_data.dart';
+import '../view/screen/test/test_data_view.dart';
 import '../view/screen/auth/on_boarding.dart';
 import 'middlewares/language_middleware.dart';
 import '../core/constants/app_routes_names.dart';
@@ -18,9 +18,9 @@ import '../view/screen/auth/password/verify_code_sign_up.dart';
 import '../view/screen/auth/password/success_reset_password.dart';
 
 final List<GetPage<Widget>> appPages = [
-  GetPage<TestData>(
+  GetPage<TestDataView>(
     name: AppRoutesNames.kTestData,
-    page: () => const TestData(),
+    page: () => const TestDataView(),
   ),
   GetPage<Test>(name: AppRoutesNames.kText, page: () => const Test()),
   GetPage<VerifyCodeSignUp>(
