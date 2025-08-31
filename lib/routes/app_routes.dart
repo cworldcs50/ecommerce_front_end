@@ -1,0 +1,62 @@
+import 'package:get/get.dart';
+import '../view/screen/test.dart';
+import '../view/screen/language.dart';
+import 'package:flutter/cupertino.dart';
+import '../view/screen/auth/on_boarding.dart';
+import 'middlewares/language_middleware.dart';
+import '../core/constants/app_routes_names.dart';
+import 'middlewares/on_boarding_middleware.dart';
+import '../view/screen/auth/email/check_email.dart';
+import '../view/screen/auth/authentication/login.dart';
+import '../view/screen/auth/password/verify_code.dart';
+import '../view/screen/auth/authentication/sign_up.dart';
+import '../view/screen/auth/password/reset_password.dart';
+import '../view/screen/auth/password/forget_password.dart';
+import '../view/screen/auth/email/success_check_email.dart';
+import '../view/screen/auth/password/verify_code_sign_up.dart';
+import '../view/screen/auth/password/success_reset_password.dart';
+
+final List<GetPage<Widget>> appPages = [
+  GetPage<Test>(name: AppRoutesNames.kText, page: () => const Test()),
+  GetPage<VerifyCodeSignUp>(
+    name: AppRoutesNames.kVerifyCodeSignUp,
+    page: () => const VerifyCodeSignUp(),
+  ),
+  GetPage<SuccessCheckEmail>(
+    name: AppRoutesNames.kSuccessCheckEmail,
+    page: () => const SuccessCheckEmail(),
+  ),
+  GetPage<CheckEmail>(
+    name: AppRoutesNames.kCheckEmail,
+    page: () => const CheckEmail(),
+  ),
+  GetPage<SuccessResetPassword>(
+    name: AppRoutesNames.kSuccessResetPassword,
+    page: () => const SuccessResetPassword(),
+  ),
+  GetPage<Test>(name: AppRoutesNames.kText, page: () => const Test()),
+  GetPage<Language>(
+    name: AppRoutesNames.kLanguage,
+    page: () => const Language(),
+    middlewares: [LanguageMiddleware()],
+  ),
+  GetPage<OnBoarding>(
+    name: AppRoutesNames.kOnBoarding,
+    page: () => const OnBoarding(),
+    middlewares: [OnBoardingMiddleware()],
+  ),
+  GetPage<Login>(name: AppRoutesNames.kLogin, page: () => const Login()),
+  GetPage<SignUp>(name: AppRoutesNames.kSignUp, page: () => const SignUp()),
+  GetPage<ForgetPassword>(
+    name: AppRoutesNames.kForgetPassword,
+    page: () => const ForgetPassword(),
+  ),
+  GetPage<VerifyCode>(
+    name: AppRoutesNames.kVerifyCode,
+    page: () => const VerifyCode(),
+  ),
+  GetPage<ResetPassword>(
+    name: AppRoutesNames.kResetPassword,
+    page: () => const ResetPassword(),
+  ),
+];
