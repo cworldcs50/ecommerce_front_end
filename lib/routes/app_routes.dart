@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import '../view/screen/test.dart';
+import '../view/screen/test/test.dart';
 import '../view/screen/language.dart';
 import 'package:flutter/cupertino.dart';
 import '../view/screen/auth/on_boarding.dart';

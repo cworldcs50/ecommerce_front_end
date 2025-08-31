@@ -1,6 +1,6 @@
 import 'dart:developer';
 import 'package:flutter/material.dart';
-import '../../core/functions/check_internet_connection.dart';
+import '../../../core/functions/check_internet_connection.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 
 class Test extends StatelessWidget {
