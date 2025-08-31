@@ -10,10 +10,12 @@ import 'controller/auth/password_controller/forget_password_controller.dart';
 import 'controller/auth/email_controller/success_check_email_controller.dart';
 import 'controller/auth/password_controller/hide_or_show_password_controller.dart';
 import 'controller/auth/password_controller/success_reset_password_controller.dart';
+import 'controller/test_data_controller.dart';
 
 class AppBinding extends Bindings {
   @override
   void dependencies() {
+    Get.lazyPut<TestDataController>(() => TestDataController(), fenix: true);
     Get.lazyPut<LoginControllerImp>(() => LoginControllerImp(), fenix: true);
     Get.lazyPut<SignUpControllerImp>(() => SignUpControllerImp(), fenix: true);
     Get.lazyPut<CheckEmailControllerImp>(

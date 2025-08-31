@@ -3,6 +3,7 @@ class AppRoutesNames {
   static const String kLogin = '/login';
   static const String kOnBoarding = "/";
   static const String kSignUp = "/signUp";
+  static const String kTestData = "/testData";
   static const String kLanguage = "/language";
   static const String kCheckEmail = "/checkEmail";
   static const String kVerifyCode = "/verifyCode";

@@ -1,8 +1,8 @@
 import 'package:get/get.dart';
-import '../core/constants/enums/request_status.dart';
-import '../core/functions/handling_data.dart';
 import '../core/services/services.dart';
+import '../core/functions/handling_data.dart';
 import '../data/datasource/remote/test_data.dart';
+import '../core/constants/enums/request_status.dart';
 
 class TestDataController extends GetxController {
   final TestData testData = TestData(api: Get.find<Services>().api);
@@ -10,14 +10,13 @@ class TestDataController extends GetxController {
   RequestStatus requestStatus = RequestStatus.loading;
   List data = [];
 
+
   Future<void> getData() async {
     final result = await testData.getData();
-    final RequestStatus resultStatus = handlingData(result);
+    requestStatus = handlingData(result);
 
-    if (resultStatus == RequestStatus.success) {
+    if (requestStatus == RequestStatus.success) {
       data.addAll(result["data"]);
-    } else {
-      requestStatus = resultStatus;
     }
 
     update();

@@ -22,7 +22,7 @@ class Ecommerce extends StatelessWidget {
         Get.put<ChangeLocaleController>(ChangeLocaleController());
 
     return GetMaterialApp(
-      initialRoute: AppRoutesNames.kText,
+      initialRoute: AppRoutesNames.kTestData,
       initialBinding: AppBinding(),
       getPages: appPages,
       debugShowCheckedModeBanner: false,
