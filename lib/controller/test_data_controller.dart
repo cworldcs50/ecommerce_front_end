@@ -10,13 +10,16 @@ class TestDataController extends GetxController {
   RequestStatus requestStatus = RequestStatus.loading;
   List data = [];
 
-
   Future<void> getData() async {
     final result = await testData.getData();
     requestStatus = handlingData(result);
 
     if (requestStatus == RequestStatus.success) {
-      data.addAll(result["data"]);
+      if (result['status'] == 'success') {
+        data.addAll(result["data"]);
+      } else {
+        requestStatus = RequestStatus.failure;
+      }
     }
 
     update();

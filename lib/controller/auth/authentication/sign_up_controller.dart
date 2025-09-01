@@ -1,6 +1,10 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import '../../../core/services/services.dart';
+import '../../../core/functions/handling_data.dart';
 import '../../../core/constants/app_routes_names.dart';
+import '../../../core/constants/enums/request_status.dart';
+import '../../../data/datasource/remote/auth/sign_up_data.dart';
 
 abstract class SignUpController extends GetxController {
   Future<void> signUp();
@@ -10,6 +14,9 @@ abstract class SignUpController extends GetxController {
 }
 
 class SignUpControllerImp extends SignUpController {
+  // List data = [];
+  late RequestStatus requestStatus;
+  late final SignUpData signUpData;
   late final GlobalKey<FormState> formKey;
   late final TextEditingController emailController;
   late final TextEditingController phoneController;
@@ -23,19 +30,40 @@ class SignUpControllerImp extends SignUpController {
     emailController = TextEditingController();
     phoneController = TextEditingController();
     passwordController = TextEditingController();
+    signUpData = SignUpData(api: Get.find<Services>().api);
+    requestStatus = RequestStatus.loading;
     super.onInit();
   }
 
   @override
   Future<void> signUp() async {
     if (formKey.currentState!.validate()) {
-      await goToVerifyCodeSignUp();
+      final dynamic result = await signUpData.addUser(
+        usernameController.text,
+        passwordController.text,
+        emailController.text,
+        phoneController.text,
+      );
+
+      requestStatus = handlingData(result);
+
+      if (requestStatus == RequestStatus.success) {
+        if (result['status'] == 'success') {
+          // data.add(result["status"]);
+          await goToVerifyCodeSignUp();
+        } else {
+          await Get.defaultDialog(title: "64".tr, middleText: "65".tr);
+          requestStatus = RequestStatus.failure;
+        }
+      }
     }
   }
 
   @override
-  Future<void> goToVerifyCodeSignUp() async =>
-      await Get.offNamed(AppRoutesNames.kVerifyCodeSignUp);
+  Future<void> goToVerifyCodeSignUp() async => await Get.offNamed(
+    AppRoutesNames.kVerifyCodeSignUp,
+    arguments: {"email": emailController.text},
+  );
 
   @override
   void onClose() {

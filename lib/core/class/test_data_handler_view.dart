@@ -26,21 +26,14 @@ class TestDataHandlerView extends StatelessWidget {
         );
       case RequestStatus.success:
         return widget;
-      case RequestStatus.noData:
-        return Center(
-          child: Lottie.asset(
-            AppImageAssets.noData,
-            repeat: true,
-            fit: BoxFit.fill,
-          ),
-        );
+
       case RequestStatus.serverFailure:
         return Center(
           child: Lottie.asset(AppImageAssets.serverFailure, fit: BoxFit.fill),
         );
       case RequestStatus.failure:
         return Center(
-          child: Lottie.asset(AppImageAssets.failure, fit: BoxFit.fill),
+          child: Lottie.asset(AppImageAssets.noData, fit: BoxFit.fill),
         );
     }
   }

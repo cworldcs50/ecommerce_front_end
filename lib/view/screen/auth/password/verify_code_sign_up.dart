@@ -28,7 +28,7 @@ class VerifyCodeSignUp extends StatelessWidget {
             const SizedBox(height: 20),
             CustomTextTitle(title: "32".tr),
             const SizedBox(height: 15),
-            CustomSubtitleText(subtitle: "35".tr),
+            CustomSubtitleText(subtitle: "${"35".tr}\n${controller.userGmail}"),
             const SizedBox(height: 30),
             OtpTextField(
               fieldWidth: 50,

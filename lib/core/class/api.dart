@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 import 'package:dartz/dartz.dart';
 import 'package:http/http.dart' as http;
 import '../constants/enums/request_status.dart';
@@ -18,12 +19,10 @@ class Api {
         );
 
         if (response.statusCode >= 200 && response.statusCode < 300) {
+          log(response.body);
           dynamic responseBody = jsonDecode(response.body);
-          if (responseBody['status'] == 'failure') {
-            return const Left(RequestStatus.noData);
-          } else {
-            return Right(responseBody);
-          }
+
+          return Right(responseBody);
         } else {
           return const Left(RequestStatus.serverFailure);
         }

@@ -43,7 +43,7 @@ class AppLangsTranslations extends Translations {
       "32": "Check Code",
       "33": "Verification Code",
       "34": "Please Enter Your Email Address To Recieve A Verfication Code",
-      "35": "Please Enter The Digit Code Sent To mohamedomer2582004@gmail.com",
+      "35": "Please Enter The Digit Code Sent To",
       "36": "Enter Verification Code",
       "37": "Verification Code",
       "38": "Reset Password",
@@ -72,6 +72,8 @@ class AppLangsTranslations extends Translations {
       "61": "cancel",
       "62": "Alert",
       "63": "Do you want to exit the app?",
+      "64": "Warning",
+      "65": "phone or email already exists!",
     },
     "ar": {
       "1": "اختر اللغة",
@@ -110,8 +112,7 @@ class AppLangsTranslations extends Translations {
       "32": "تحقق من الكود",
       "33": "رمز التحقق",
       "34": "الرجاء إدخال عنوان بريدك الإلكتروني لتلقي رمز التحقق",
-      "35":
-          " الرجاء إدخال الرمز الرقمي المرسل إلى mohamedomer2582004@gmail.com",
+      "35": " الرجاء إدخال الرمز الرقمي المرسل إلى",
       "36": "أدخل رمز التحقق",
       "37": "رمز التحقق",
       "38": "إعادة تعيين كلمة المرور",
@@ -140,6 +141,8 @@ class AppLangsTranslations extends Translations {
       "61": "إلغاء",
       "62": "تنبيه",
       "63": "هل تريد الخروج من التطبيق",
+      "64": "تحذير",
+      "65": "الهاتف أو البريد الإلكتروني موجود بالفعل!",
     },
   };
 }
