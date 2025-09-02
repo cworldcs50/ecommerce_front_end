@@ -21,7 +21,6 @@ class Api {
         if (response.statusCode >= 200 && response.statusCode < 300) {
           log(response.body);
           dynamic responseBody = jsonDecode(response.body);
-
           return Right(responseBody);
         } else {
           return const Left(RequestStatus.serverFailure);

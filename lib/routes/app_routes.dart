@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import '../view/screen/auth/authentication/success_sign_up.dart';
 import '../view/screen/test/test.dart';
 import '../view/screen/language.dart';
 import 'package:flutter/cupertino.dart';
@@ -14,7 +15,7 @@ import '../view/screen/auth/authentication/sign_up.dart';
 import '../view/screen/auth/password/reset_password.dart';
 import '../view/screen/auth/password/forget_password.dart';
 import '../view/screen/auth/email/success_check_email.dart';
-import '../view/screen/auth/password/verify_code_sign_up.dart';
+import '../view/screen/auth/authentication/verify_code_sign_up.dart';
 import '../view/screen/auth/password/success_reset_password.dart';
 
 final List<GetPage<Widget>> appPages = [
@@ -63,5 +64,10 @@ final List<GetPage<Widget>> appPages = [
   GetPage<ResetPassword>(
     name: AppRoutesNames.kResetPassword,
     page: () => const ResetPassword(),
+  ),
+
+  GetPage<SuccessSignUp>(
+    name: AppRoutesNames.kSuccessSignUp,
+    page: () => const SuccessSignUp(),
   ),
 ];

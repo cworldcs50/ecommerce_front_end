@@ -15,7 +15,7 @@ abstract class SignUpController extends GetxController {
 
 class SignUpControllerImp extends SignUpController {
   // List data = [];
-  late RequestStatus requestStatus;
+  RequestStatus? requestStatus;
   late final SignUpData signUpData;
   late final GlobalKey<FormState> formKey;
   late final TextEditingController emailController;
@@ -31,13 +31,15 @@ class SignUpControllerImp extends SignUpController {
     phoneController = TextEditingController();
     passwordController = TextEditingController();
     signUpData = SignUpData(api: Get.find<Services>().api);
-    requestStatus = RequestStatus.loading;
     super.onInit();
   }
 
   @override
   Future<void> signUp() async {
     if (formKey.currentState!.validate()) {
+      requestStatus = RequestStatus.loading;
+      update();
+
       final dynamic result = await signUpData.addUser(
         usernameController.text,
         passwordController.text,
@@ -52,9 +54,16 @@ class SignUpControllerImp extends SignUpController {
           // data.add(result["status"]);
           await goToVerifyCodeSignUp();
         } else {
+          requestStatus = null;
+          update();
           await Get.defaultDialog(title: "64".tr, middleText: "65".tr);
-          requestStatus = RequestStatus.failure;
         }
+      } else {
+        update();
+        await Future.delayed(const Duration(seconds: 5), () {
+          requestStatus = null;
+          update();
+        });
       }
     }
   }

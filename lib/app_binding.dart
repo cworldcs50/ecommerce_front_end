@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'controller/auth/authentication/success_sign_up_controller.dart';
 import 'controller/on_boarding_controller.dart';
 import 'controller/auth/authentication/login_controller.dart';
 import 'controller/auth/authentication/sign_up_controller.dart';
@@ -15,6 +16,10 @@ import 'controller/test_data_controller.dart';
 class AppBinding extends Bindings {
   @override
   void dependencies() {
+    Get.lazyPut<SuccessSignUpControllerImp>(
+      () => SuccessSignUpControllerImp(),
+      fenix: true,
+    );
     Get.lazyPut<TestDataController>(() => TestDataController(), fenix: true);
     Get.lazyPut<LoginControllerImp>(() => LoginControllerImp(), fenix: true);
     Get.lazyPut<SignUpControllerImp>(() => SignUpControllerImp(), fenix: true);

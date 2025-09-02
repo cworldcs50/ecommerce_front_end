@@ -74,6 +74,9 @@ class AppLangsTranslations extends Translations {
       "63": "Do you want to exit the app?",
       "64": "Warning",
       "65": "phone or email already exists!",
+      "66": "Vefication Code is not correct!",
+      "67": "Error",
+      "68": "Signed up successfully!",
     },
     "ar": {
       "1": "اختر اللغة",
@@ -143,6 +146,9 @@ class AppLangsTranslations extends Translations {
       "63": "هل تريد الخروج من التطبيق",
       "64": "تحذير",
       "65": "الهاتف أو البريد الإلكتروني موجود بالفعل!",
+      "66": "رمز التحقق غير صحيح!",
+      "67": "خطأ",
+      "68": "تم التسجيل بنجاح!",
     },
   };
 }
