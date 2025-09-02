@@ -77,6 +77,8 @@ class AppLangsTranslations extends Translations {
       "66": "Vefication Code is not correct!",
       "67": "Error",
       "68": "Signed up successfully!",
+      "69": "email or password is not correct!",
+      "70": "mandatory",
     },
     "ar": {
       "1": "اختر اللغة",
@@ -149,6 +151,8 @@ class AppLangsTranslations extends Translations {
       "66": "رمز التحقق غير صحيح!",
       "67": "خطأ",
       "68": "تم التسجيل بنجاح!",
+      "69": "البريد الإلكتروني أو كلمة المرور غير صحيحة!",
+      "70": "إلزامي",
     },
   };
 }

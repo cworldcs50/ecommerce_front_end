@@ -1,4 +1,5 @@
 class AppRoutesNames {
+  static const String kHome = "/home";
   static const String kText = "/test";
   static const String kLogin = '/login';
   static const String kOnBoarding = "/";

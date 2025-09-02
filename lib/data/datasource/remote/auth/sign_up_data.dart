@@ -14,7 +14,7 @@ class SignUpData {
     String email,
     String phone,
   ) async {
-    Either<RequestStatus, Map> response = await api.post(AppApiLinks.kSingUp, {
+    Either<RequestStatus, Map> response = await api.post(AppApiLinks.kSignUp, {
       "userEmail": email,
       "userPhone": phone,
       "userName": username,
