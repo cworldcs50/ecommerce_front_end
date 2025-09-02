@@ -11,7 +11,7 @@ import '../core/constants/app_routes_names.dart';
 import 'middlewares/on_boarding_middleware.dart';
 import '../view/screen/auth/email/check_email.dart';
 import '../view/screen/auth/authentication/login.dart';
-import '../view/screen/auth/password/verify_code.dart';
+import '../view/screen/auth/password/forget_password_verify_code.dart';
 import '../view/screen/auth/authentication/sign_up.dart';
 import '../view/screen/auth/password/reset_password.dart';
 import '../view/screen/auth/password/forget_password.dart';
@@ -58,9 +58,9 @@ final List<GetPage<Widget>> appPages = [
     name: AppRoutesNames.kForgetPassword,
     page: () => const ForgetPassword(),
   ),
-  GetPage<VerifyCode>(
-    name: AppRoutesNames.kVerifyCode,
-    page: () => const VerifyCode(),
+  GetPage<ForgetPasswordVerifyCode>(
+    name: AppRoutesNames.kForgetPasswordVerifyCode,
+    page: () => const ForgetPasswordVerifyCode(),
   ),
   GetPage<ResetPassword>(
     name: AppRoutesNames.kResetPassword,

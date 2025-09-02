@@ -79,6 +79,7 @@ class AppLangsTranslations extends Translations {
       "68": "Signed up successfully!",
       "69": "email or password is not correct!",
       "70": "mandatory",
+      "71": "Email not Found!",
     },
     "ar": {
       "1": "اختر اللغة",
@@ -153,6 +154,7 @@ class AppLangsTranslations extends Translations {
       "68": "تم التسجيل بنجاح!",
       "69": "البريد الإلكتروني أو كلمة المرور غير صحيحة!",
       "70": "إلزامي",
+      "71": "لم يتم العثور على البريد الإلكتروني!",
     },
   };
 }

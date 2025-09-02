@@ -4,5 +4,8 @@ class AppApiLinks {
   static const String kTest = "$kBaseUrl/test.php";
   static const String kSignUp = "$kBaseUrl/auth/sign_up.php";
   static const String kSignin = "$kBaseUrl/auth/sign_in.php";
+  static const String kCheckEmail = "$kBaseUrl/forget_password/check_email.php";
   static const String kVerificationCode = "$kBaseUrl/auth/verfication_code.php";
+  // static const String kForgetPasswordVerificationCode =
+  //     "$kBaseUrl/forget_password/check_email.php";
 }

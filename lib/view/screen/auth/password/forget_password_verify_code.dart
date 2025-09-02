@@ -6,8 +6,8 @@ import '../../../widget/auth/custom_subtitle_text.dart';
 import '../../../../controller/auth/verification_code/verify_code_contoller.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 
-class VerifyCode extends StatelessWidget {
-  const VerifyCode({super.key});
+class ForgetPasswordVerifyCode extends StatelessWidget {
+  const ForgetPasswordVerifyCode({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +34,6 @@ class VerifyCode extends StatelessWidget {
               fieldWidth: 50,
               numberOfFields: 5,
               showFieldAsBox: true,
-              onCodeChanged: (String code) {},
               borderColor: const Color(0xFF512DA8),
               borderRadius: BorderRadius.circular(10),
               onSubmit: (String verificationCode) async {

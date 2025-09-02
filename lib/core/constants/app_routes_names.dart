@@ -7,11 +7,11 @@ class AppRoutesNames {
   static const String kTestData = "/testData";
   static const String kLanguage = "/language";
   static const String kCheckEmail = "/checkEmail";
-  static const String kVerifyCode = "/verifyCode";
   static const String kResetPassword = "/resetPassword";
   static const String kSuccessSignUp = "/successSignUp";
   static const String kForgetPassword = "/forgetPassword";
   static const String kVerifyCodeSignUp = "/verifyCodeSignUp";
   static const String kSuccessCheckEmail = "/successCheckEmail";
   static const String kSuccessResetPassword = "/successResetPassword";
+  static const String kForgetPasswordVerifyCode = "/forgetPasswordVerifyCode";
 }
