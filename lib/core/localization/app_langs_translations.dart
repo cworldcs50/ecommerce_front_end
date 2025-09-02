@@ -81,6 +81,7 @@ class AppLangsTranslations extends Translations {
       "70": "mandatory",
       "71": "Email not Found!",
       "72": "please enter a new password!",
+      "73": "try again!",
     },
     "ar": {
       "1": "اختر اللغة",
@@ -157,6 +158,7 @@ class AppLangsTranslations extends Translations {
       "70": "إلزامي",
       "71": "لم يتم العثور على البريد الإلكتروني!",
       "72": "الرجاء إدخال كلمة مرور جديدة!",
+      "73": "!حاول مرة اخري",
     },
   };
 }
