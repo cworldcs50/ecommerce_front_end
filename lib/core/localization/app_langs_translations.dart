@@ -80,6 +80,7 @@ class AppLangsTranslations extends Translations {
       "69": "email or password is not correct!",
       "70": "mandatory",
       "71": "Email not Found!",
+      "72": "please enter a new password!",
     },
     "ar": {
       "1": "اختر اللغة",
@@ -155,6 +156,7 @@ class AppLangsTranslations extends Translations {
       "69": "البريد الإلكتروني أو كلمة المرور غير صحيحة!",
       "70": "إلزامي",
       "71": "لم يتم العثور على البريد الإلكتروني!",
+      "72": "الرجاء إدخال كلمة مرور جديدة!",
     },
   };
 }

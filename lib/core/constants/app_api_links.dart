@@ -8,4 +8,6 @@ class AppApiLinks {
   static const String kVerificationCode = "$kBaseUrl/auth/verfication_code.php";
   static const String kForgetPasswordVerificationCode =
       "$kBaseUrl/forget_password/forget_password_verification_code.php";
+  static const String kResetPassword =
+      "$kBaseUrl/forget_password/reset_password.php";
 }

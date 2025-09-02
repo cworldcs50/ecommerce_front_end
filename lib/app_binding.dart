@@ -52,8 +52,20 @@ class AppBinding extends Bindings {
       () => OnBoardingControllerImp(),
       fenix: true,
     );
-    Get.lazyPut<HideOrShowPasswordControllerImp>(
+
+    Get.lazyPut(
       () => HideOrShowPasswordControllerImp(),
+      tag: "password",
+      fenix: true,
+    );
+    Get.lazyPut(
+      () => HideOrShowPasswordControllerImp(),
+      tag: "confirmedPassword",
+      fenix: true,
+    );
+    Get.lazyPut(
+      () => HideOrShowPasswordControllerImp(),
+      tag: "login",
       fenix: true,
     );
   }

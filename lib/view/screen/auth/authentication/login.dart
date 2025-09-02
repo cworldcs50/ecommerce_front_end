@@ -54,6 +54,7 @@ class Login extends StatelessWidget {
                       ),
                       const SizedBox(height: 25),
                       GetBuilder<HideOrShowPasswordControllerImp>(
+                        tag: "login",
                         builder: (c) {
                           return CustomTextFormField(
                             obsecureText: c.isObsecuredText,

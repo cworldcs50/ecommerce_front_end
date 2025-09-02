@@ -54,6 +54,8 @@ class ForgetPasswordVerifyCodeControllerImp
   }
 
   @override
-  goToResetPassword() async =>
-      await Get.offNamed(AppRoutesNames.kResetPassword);
+  goToResetPassword() async => await Get.offNamed(
+    AppRoutesNames.kResetPassword,
+    arguments: {"email": Get.arguments["email"]},
+  );
 }
