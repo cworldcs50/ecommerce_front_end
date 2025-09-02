@@ -45,7 +45,8 @@ class Login extends StatelessWidget {
                       const SizedBox(height: 30),
                       CustomTextFormField(
                         keyboardType: TextInputType.emailAddress,
-                        validator: (email) => controller.validateInputs(email),
+                        validator:
+                            (email) => controller.validateInputs(email)?.tr,
                         labelText: "14".tr,
                         hintText: "15".tr,
                         icon: Icons.email_outlined,
@@ -60,7 +61,7 @@ class Login extends StatelessWidget {
                             keyboardType: TextInputType.visiblePassword,
                             validator:
                                 (password) =>
-                                    controller.validateInputs(password),
+                                    controller.validateInputs(password)?.tr,
 
                             labelText: "16".tr,
                             hintText: "17".tr,
