@@ -4,7 +4,7 @@ import 'controller/on_boarding_controller.dart';
 import 'controller/auth/authentication/login_controller.dart';
 import 'controller/auth/authentication/sign_up_controller.dart';
 import 'controller/auth/verification_code/verify_code_sign_up.dart';
-import 'controller/auth/verification_code/verify_code_contoller.dart';
+import 'controller/auth/verification_code/forget_password_verify_code_controller.dart';
 import 'controller/auth/email_controller/check_email_controller.dart';
 import 'controller/auth/password_controller/reset_password_controller.dart';
 import 'controller/auth/password_controller/forget_password_controller.dart';
@@ -44,8 +44,8 @@ class AppBinding extends Bindings {
       fenix: true,
     );
     Get.lazyPut<VerifyCodeSignUpImp>(() => VerifyCodeSignUpImp(), fenix: true);
-    Get.lazyPut<VerifyCodeControllerImp>(
-      () => VerifyCodeControllerImp(),
+    Get.lazyPut<ForgetPasswordVerifyCodeControllerImp>(
+      () => ForgetPasswordVerifyCodeControllerImp(),
       fenix: true,
     );
     Get.lazyPut<OnBoardingControllerImp>(

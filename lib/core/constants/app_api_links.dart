@@ -6,6 +6,6 @@ class AppApiLinks {
   static const String kSignin = "$kBaseUrl/auth/sign_in.php";
   static const String kCheckEmail = "$kBaseUrl/forget_password/check_email.php";
   static const String kVerificationCode = "$kBaseUrl/auth/verfication_code.php";
-  // static const String kForgetPasswordVerificationCode =
-  //     "$kBaseUrl/forget_password/check_email.php";
+  static const String kForgetPasswordVerificationCode =
+      "$kBaseUrl/forget_password/forget_password_verification_code.php";
 }

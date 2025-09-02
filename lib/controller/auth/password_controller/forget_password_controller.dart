@@ -33,7 +33,6 @@ class ForgetPasswordControllerImp extends ForgetPasswordController {
       update();
 
       final result = await forgetPasswordData.checkEmail(emailController.text);
-
       requestStatus = handlingData(result);
 
       if (requestStatus == RequestStatus.success) {
@@ -55,8 +54,10 @@ class ForgetPasswordControllerImp extends ForgetPasswordController {
   }
 
   @override
-  goToVerifyCode() async =>
-      await Get.offNamed(AppRoutesNames.kForgetPasswordVerifyCode);
+  goToVerifyCode() async => await Get.offNamed(
+    AppRoutesNames.kForgetPasswordVerifyCode,
+    arguments: {"email": emailController.text},
+  );
 
   @override
   void onClose() {

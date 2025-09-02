@@ -14,7 +14,6 @@ abstract class SignUpController extends GetxController {
 }
 
 class SignUpControllerImp extends SignUpController {
-  // List data = [];
   RequestStatus? requestStatus;
   late final SignUpData signUpData;
   late final GlobalKey<FormState> formKey;
@@ -51,7 +50,6 @@ class SignUpControllerImp extends SignUpController {
 
       if (requestStatus == RequestStatus.success) {
         if (result['status'] == 'success') {
-          // data.add(result["status"]);
           await goToVerifyCodeSignUp();
         } else {
           requestStatus = null;
