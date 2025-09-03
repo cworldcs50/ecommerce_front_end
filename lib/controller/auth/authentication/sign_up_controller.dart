@@ -16,15 +16,14 @@ abstract class SignUpController extends GetxController {
 class SignUpControllerImp extends SignUpController {
   RequestStatus? requestStatus;
   late final SignUpData signUpData;
-  late final GlobalKey<FormState> formKey;
   late final TextEditingController emailController;
   late final TextEditingController phoneController;
   late final TextEditingController usernameController;
   late final TextEditingController passwordController;
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   @override
   void onInit() {
-    formKey = GlobalKey<FormState>();
     usernameController = TextEditingController();
     emailController = TextEditingController();
     phoneController = TextEditingController();

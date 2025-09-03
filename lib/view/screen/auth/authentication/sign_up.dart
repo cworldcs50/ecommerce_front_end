@@ -1,20 +1,19 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
-import '../../../../controller/auth/password_controller/hide_or_show_password_controller.dart';
-import '../../../../core/class/request_handler_view.dart';
 import '../../../../core/constants/app_color.dart';
-import '../../../../core/constants/enums/input_type.dart';
-import '../../../../core/functions/validate_input.dart';
 import '../../../widget/auth/custom_text_title.dart';
 import '../../../widget/auth/custom_auth_button.dart';
 import '../../../widget/auth/custom_sign_up_text.dart';
 import '../../../widget/auth/custom_subtitle_text.dart';
+import '../../../../core/functions/validate_input.dart';
+import '../../../../core/class/request_handler_view.dart';
+import '../../../../core/constants/enums/input_type.dart';
 import '../../../widget/auth/custom_text_form_field.dart';
 import '../../../../controller/auth/authentication/sign_up_controller.dart';
+import '../../../../controller/auth/password_controller/hide_or_show_password_controller.dart';
 
 class SignUp extends StatelessWidget {
   const SignUp({super.key});
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -87,6 +86,7 @@ class SignUp extends StatelessWidget {
                     ),
                     const SizedBox(height: 25),
                     GetBuilder<HideOrShowPasswordControllerImp>(
+                      tag: "signUpPassword",
                       builder: (c) {
                         return CustomTextFormField(
                           obsecureText: c.isObsecuredText,

@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../../core/services/services.dart';
 import '../../../core/functions/handling_data.dart';
 import '../../../core/constants/app_routes_names.dart';
@@ -18,6 +19,7 @@ class LoginControllerImp extends LoginController {
   RequestStatus? requestStatus;
   late final SignInData signInData;
   late final GlobalKey<FormState> formKey;
+  late final SharedPreferences sharedPrefs;
   late final TextEditingController emailController;
   late final TextEditingController passwordController;
 
@@ -26,13 +28,14 @@ class LoginControllerImp extends LoginController {
     formKey = GlobalKey<FormState>();
     emailController = TextEditingController();
     passwordController = TextEditingController();
+    sharedPrefs = Get.find<Services>().prefs;
     signInData = SignInData(api: Get.find<Services>().api);
     super.onInit();
   }
 
   @override
   Future<void> login() async {
-    if (formKey.currentState!.validate()) {
+    if (formKey.currentState != null && formKey.currentState!.validate()) {
       requestStatus = RequestStatus.loading;
       update();
 
@@ -45,6 +48,7 @@ class LoginControllerImp extends LoginController {
 
       if (requestStatus == RequestStatus.success) {
         if (result['status'] == 'success') {
+          sharedPrefs.setBool("isUserSignedIn", true);
           await goToHomeView();
         } else {
           requestStatus = null;

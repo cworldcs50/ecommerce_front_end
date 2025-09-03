@@ -18,6 +18,7 @@ import '../view/screen/auth/password/forget_password.dart';
 import '../view/screen/auth/email/success_check_email.dart';
 import '../view/screen/auth/authentication/verify_code_sign_up.dart';
 import '../view/screen/auth/password/success_reset_password.dart';
+import 'middlewares/sign_in_middleware.dart';
 
 final List<GetPage<Widget>> appPages = [
   GetPage<TestDataView>(
@@ -52,7 +53,11 @@ final List<GetPage<Widget>> appPages = [
     page: () => const OnBoarding(),
     middlewares: [OnBoardingMiddleware()],
   ),
-  GetPage<Login>(name: AppRoutesNames.kLogin, page: () => const Login()),
+  GetPage<Login>(
+    name: AppRoutesNames.kLogin,
+    page: () => const Login(),
+    middlewares: [SignInMiddleware()],
+  ),
   GetPage<SignUp>(name: AppRoutesNames.kSignUp, page: () => const SignUp()),
   GetPage<ForgetPassword>(
     name: AppRoutesNames.kForgetPassword,
