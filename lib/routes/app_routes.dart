@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 import '../view/screen/auth/authentication/success_sign_up.dart';
-import '../view/screen/auth/home.dart';
+import '../view/screen/home.dart';
 import '../view/screen/test/test.dart';
 import '../view/screen/language.dart';
 import 'package:flutter/cupertino.dart';
