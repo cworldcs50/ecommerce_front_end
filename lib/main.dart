@@ -4,14 +4,11 @@ import 'routes/app_routes.dart';
 import 'core/services/services.dart';
 import 'package:flutter/material.dart';
 import 'core/constants/app_routes_names.dart';
-import 'package:ecommerce/firebase_options.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'core/localization/app_langs_translations.dart';
 import 'core/localization/change_locale_controller.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   await initialServices();
   runApp(const Ecommerce());
 }
