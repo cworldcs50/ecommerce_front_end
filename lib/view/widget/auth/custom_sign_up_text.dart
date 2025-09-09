@@ -23,7 +23,7 @@ class CustomSignUpOrSignInText extends StatelessWidget {
           child: Text(
             btnName,
             style: const TextStyle(
-              color: AppColor.primaryColor,
+              color: AppColor.primaryColorDark,
               fontWeight: FontWeight.bold,
             ),
           ),

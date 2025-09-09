@@ -28,7 +28,7 @@ class SuccessResetPassword extends StatelessWidget {
             const Spacer(),
             const Icon(
               Icons.check_circle_outline,
-              color: AppColor.primaryColor,
+              color: AppColor.primaryColorDark,
               size: 250,
             ),
             Text(

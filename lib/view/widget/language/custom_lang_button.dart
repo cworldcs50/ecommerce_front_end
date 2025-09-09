@@ -15,7 +15,7 @@ class CustomLangButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
-      color: AppColor.primaryColor,
+      color: AppColor.primaryColorDark,
       onPressed: onPressed,
       padding: const EdgeInsets.symmetric(horizontal: 90),
       textColor: Colors.white,

@@ -19,7 +19,7 @@ class CustomSlider extends StatelessWidget {
               height: 6,
               margin: const EdgeInsets.only(right: 8),
               decoration: BoxDecoration(
-                color: AppColor.primaryColor,
+                color: AppColor.primaryColorDark,
                 borderRadius: BorderRadius.circular(10),
               ),
               duration: const Duration(milliseconds: 900),

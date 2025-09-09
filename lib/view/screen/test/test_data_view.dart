@@ -13,7 +13,7 @@ class TestDataView extends StatelessWidget {
       appBar: AppBar(
         title: const Text("Test Data"),
         centerTitle: true,
-        backgroundColor: AppColor.primaryColor,
+        backgroundColor: AppColor.primaryColorDark,
       ),
       body: GetBuilder<TestDataController>(
         builder:
