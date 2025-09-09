@@ -6,6 +6,7 @@ import '../../../core/functions/handling_data.dart';
 import '../../../core/constants/app_routes_names.dart';
 import '../../../core/constants/enums/request_status.dart';
 import '../../../data/datasource/remote/auth/sign_in_data.dart';
+import '../../../data/model/user_model.dart';
 
 abstract class LoginController extends GetxController {
   Future<void> login();
@@ -48,8 +49,11 @@ class LoginControllerImp extends LoginController {
 
       if (requestStatus == RequestStatus.success) {
         if (result['status'] == 'success') {
-          sharedPrefs.setBool("isUserSignedIn", true);
-          await goToHomeView();
+          await Future.wait([
+            sharedPrefs.setBool("isUserSignedIn", true),
+            UserModel.fromJson(result["data"]).toSharedPrefs(),
+            goToHomeView(),
+          ]);
         } else {
           requestStatus = null;
           update();
