@@ -22,7 +22,7 @@ class OnBoardingControllerImp extends OnBoardingController {
   @override
   void next() {
     if (currentPageIndex == onBoardingModels.length - 1) {
-      Get.offNamed(AppRoutesNames.kLogin);
+      Get.offAllNamed(AppRoutesNames.kLogin);
       Get.find<Services>().prefs.setBool("visited", true);
     }
     pageController.animateToPage(
@@ -33,7 +33,7 @@ class OnBoardingControllerImp extends OnBoardingController {
     update();
   }
 
-    @override
+  @override
   void onPageChanged(int index) {
     currentPageIndex = index;
     update();
