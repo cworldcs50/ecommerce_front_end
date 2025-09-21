@@ -27,9 +27,9 @@ class Ecommerce extends StatelessWidget {
       initialBinding: AppBinding(),
       debugShowCheckedModeBanner: false,
       translations: AppLangsTranslations(),
+      theme: changeLocaleController.appTheme,
       initialRoute: AppRoutesNames.kLanguage,
       locale: changeLocaleController.language,
-      theme: changeLocaleController.appTheme,
     );
   }
 }
