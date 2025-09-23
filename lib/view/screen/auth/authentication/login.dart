@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import '../../../widget/auth/custom_text_form_field.dart';
 import '../../../widget/auth/logo_auth.dart';
 import '../../../../core/constants/app_color.dart';
 import '../../../widget/auth/custom_text_title.dart';
@@ -8,7 +9,6 @@ import '../../../widget/auth/custom_sign_up_text.dart';
 import '../../../widget/auth/custom_subtitle_text.dart';
 import '../../../../core/functions/alert_exit_app.dart';
 import '../../../../core/class/request_handler_view.dart';
-import '../../../widget/auth/custom_text_form_field.dart';
 import '../../../widget/auth/forget_password_button.dart';
 import '../../../../controller/auth/authentication/login_controller.dart';
 import '../../../../controller/auth/password_controller/hide_or_show_password_controller.dart';

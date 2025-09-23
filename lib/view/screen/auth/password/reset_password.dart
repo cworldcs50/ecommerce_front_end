@@ -1,10 +1,10 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import '../../../../core/constants/app_color.dart';
+import '../../../widget/auth/custom_text_form_field.dart';
 import '../../../widget/auth/custom_text_title.dart';
 import '../../../widget/auth/custom_auth_button.dart';
 import '../../../widget/auth/custom_subtitle_text.dart';
-import '../../../widget/auth/custom_text_form_field.dart';
 import '../../../../controller/auth/password_controller/reset_password_controller.dart';
 import '../../../../controller/auth/password_controller/hide_or_show_password_controller.dart';
 

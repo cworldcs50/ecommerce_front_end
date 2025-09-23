@@ -6,9 +6,9 @@ import '../../../widget/auth/custom_auth_button.dart';
 import '../../../widget/auth/custom_sign_up_text.dart';
 import '../../../widget/auth/custom_subtitle_text.dart';
 import '../../../../core/functions/validate_input.dart';
+import '../../../widget/auth/custom_text_form_field.dart';
 import '../../../../core/class/request_handler_view.dart';
 import '../../../../core/constants/enums/input_type.dart';
-import '../../../widget/auth/custom_text_form_field.dart';
 import '../../../../controller/auth/authentication/sign_up_controller.dart';
 import '../../../../controller/auth/password_controller/hide_or_show_password_controller.dart';
 

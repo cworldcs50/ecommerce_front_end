@@ -4,8 +4,8 @@ import '../../../../core/constants/app_color.dart';
 import '../../../widget/auth/custom_text_title.dart';
 import '../../../widget/auth/custom_auth_button.dart';
 import '../../../widget/auth/custom_subtitle_text.dart';
-import '../../../../core/class/request_handler_view.dart';
 import '../../../widget/auth/custom_text_form_field.dart';
+import '../../../../core/class/request_handler_view.dart';
 import '../../../../controller/auth/password_controller/forget_password_controller.dart';
 
 class ForgetPassword extends StatelessWidget {

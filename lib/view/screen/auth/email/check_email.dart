@@ -5,8 +5,8 @@ import '../../../../../core/constants/app_color.dart';
 import '../../../widget/auth/custom_auth_button.dart';
 import '../../../widget/auth/custom_subtitle_text.dart';
 import '../../../../core/functions/validate_input.dart';
-import '../../../../core/constants/enums/input_type.dart';
 import '../../../widget/auth/custom_text_form_field.dart';
+import '../../../../core/constants/enums/input_type.dart';
 import '../../../../controller/auth/email_controller/check_email_controller.dart';
 
 class CheckEmail extends StatelessWidget {
