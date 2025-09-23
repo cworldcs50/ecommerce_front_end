@@ -1,5 +1,7 @@
 import 'package:equatable/equatable.dart';
 
+import '../../core/constants/app_api_links.dart';
+
 class CategoriesModel extends Equatable {
   const CategoriesModel({
     required this.categoriesId,
@@ -12,7 +14,8 @@ class CategoriesModel extends Equatable {
   factory CategoriesModel.fromJson(Map<String, dynamic> jsonData) =>
       CategoriesModel(
         categoriesId: jsonData["categories_id"],
-        categoriesImage: jsonData["categories_image"],
+        categoriesImage:
+            "${AppApiLinks.kCategoiresImages}/${jsonData["categories_image"]}",
         categoriesName: jsonData["categories_name"],
         categoriesNameAr: jsonData["categories_name_ar"],
         categoriesCreationTime: jsonData["categories_creation_time"],
@@ -27,8 +30,8 @@ class CategoriesModel extends Equatable {
   List<Object?> get props => [
     categoriesId,
     categoriesName,
-    categoriesNameAr,
     categoriesImage,
+    categoriesNameAr,
     categoriesCreationTime,
   ];
 }
