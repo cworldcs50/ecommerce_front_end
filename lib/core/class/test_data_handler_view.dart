@@ -16,6 +16,8 @@ class TestDataHandlerView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     switch (requestStatus) {
+      case RequestStatus.noData:
+        return Lottie.asset(AppImageAssets.noData, fit: BoxFit.fill);
       case RequestStatus.loading:
         return Center(
           child: Lottie.asset(AppImageAssets.loading, fit: BoxFit.fill),

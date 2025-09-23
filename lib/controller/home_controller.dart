@@ -23,6 +23,7 @@ class HomeControllerImp extends HomeController {
   Future<void> onInit() async {
     super.onInit();
     await initialData();
+    await getCategories();
   }
 
   @override
@@ -50,7 +51,12 @@ class HomeControllerImp extends HomeController {
                   .toList();
           update();
         } else {
-          //i think in this case i will try to add something
+          requestStatus = RequestStatus.noData;
+          update();
+          await Future.delayed(const Duration(seconds: 5), () {
+            requestStatus = null;
+            update();
+          });
         }
       } else {
         update();

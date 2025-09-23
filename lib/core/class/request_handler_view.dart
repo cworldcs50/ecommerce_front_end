@@ -13,7 +13,7 @@ class RequestHandlerView extends StatelessWidget {
 
   final Widget child;
   final RequestStatus? status;
-  
+
   @override
   Widget build(BuildContext context) {
     switch (status) {
@@ -25,6 +25,8 @@ class RequestHandlerView extends StatelessWidget {
         return Center(child: Lottie.asset(AppImageAssets.serverFailure));
       case RequestStatus.failure:
         return Center(child: Lottie.asset(AppImageAssets.failure));
+      case RequestStatus.noData:
+        return Center(child: Lottie.asset(AppImageAssets.noData));
       default:
         return child;
     }

@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'controller/auth/authentication/success_sign_up_controller.dart';
+import 'controller/home_controller.dart';
 import 'controller/on_boarding_controller.dart';
 import 'controller/auth/authentication/login_controller.dart';
 import 'controller/auth/authentication/sign_up_controller.dart';
@@ -64,7 +65,7 @@ class AppBinding extends Bindings {
       fenix: true,
     );
 
-      Get.lazyPut(
+    Get.lazyPut(
       () => HideOrShowPasswordControllerImp(),
       tag: "signUpPassword",
       fenix: true,
@@ -75,5 +76,7 @@ class AppBinding extends Bindings {
       tag: "login",
       fenix: true,
     );
+
+    Get.lazyPut(() => HomeControllerImp(), fenix: true);
   }
 }
