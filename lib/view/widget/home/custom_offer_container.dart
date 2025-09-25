@@ -31,8 +31,8 @@ class CustomOfferContainer extends StatelessWidget {
             top: -25,
             right: -20,
             child: Container(
-              width: 190,
-              height: 190,
+              width: 180,
+              height: 180,
               decoration: const BoxDecoration(
                 color: AppColor.primaryColorLight,
                 shape: BoxShape.circle,

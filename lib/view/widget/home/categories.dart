@@ -17,7 +17,8 @@ class Categories extends StatelessWidget {
       spacing: 10,
       children: [
         Container(
-          height: 50,
+          width: 90,
+          height: 80,
           decoration: BoxDecoration(
             color: AppColor.primaryColorDark,
             borderRadius: BorderRadius.circular(20),

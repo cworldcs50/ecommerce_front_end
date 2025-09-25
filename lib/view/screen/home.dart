@@ -37,10 +37,11 @@ class HomeView extends StatelessWidget {
                   const SizedBox(height: 10),
                   SizedBox(
                     width: 300,
-                    height: 220,
+                    height: 200,
                     child: ListView.separated(
                       itemCount: 20,
                       scrollDirection: Axis.horizontal,
+                      physics: const BouncingScrollPhysics(),
                       separatorBuilder:
                           (context, index) => const SizedBox(width: 20),
                       itemBuilder:
@@ -49,13 +50,12 @@ class HomeView extends StatelessWidget {
                   ),
                   const SizedBox(height: 10),
                   Container(
-                    height: 150,
+                    height: 140,
                     alignment: Alignment.center,
                     child: CustomCategoriesListView(
                       categories: controller.categories,
                     ),
                   ),
-                  const SizedBox(height: 10),
                   Text(
                     "74".tr,
                     style: const TextStyle(
@@ -64,15 +64,16 @@ class HomeView extends StatelessWidget {
                       fontWeight: FontWeight.w700,
                     ),
                   ),
-                  const SizedBox(height: 10),
+                  const SizedBox(height: 5),
                   SizedBox(
                     height: 150,
                     child: ListView.separated(
                       itemCount: 20,
                       scrollDirection: Axis.horizontal,
-                      itemBuilder: (context, index) => const CustomItem(),
+                      physics: const BouncingScrollPhysics(),
                       separatorBuilder:
                           (context, index) => const SizedBox(width: 20),
+                      itemBuilder: (context, index) => const CustomItem(),
                     ),
                   ),
                 ],
