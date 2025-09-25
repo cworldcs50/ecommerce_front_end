@@ -7,9 +7,9 @@ class CustomOfferContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 190,
+      width: 380,
       height: 190,
-      margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+      margin: const EdgeInsets.symmetric(vertical: 15),
       decoration: BoxDecoration(
         color: const Color(0xFF5673C4),
         borderRadius: BorderRadius.circular(15),

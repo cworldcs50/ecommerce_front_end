@@ -10,11 +10,8 @@ class AppApiLinks {
       "$kBaseUrl/forget_password/forget_password_verification_code.php";
   static const String kResetPassword =
       "$kBaseUrl/forget_password/reset_password.php";
-
   static const String kHome = "$kBaseUrl/home.php";
-
   static const String kBaseImageUrl = "$kBaseUrl/upload";
-
-  static const String kCategoiresImages = "$kBaseImageUrl/categories";
   static const String kItemsImages = "$kBaseImageUrl/items";
+  static const String kCategoiresImages = "$kBaseImageUrl/categories";
 }

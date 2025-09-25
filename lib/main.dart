@@ -21,15 +21,17 @@ class Ecommerce extends StatelessWidget {
     final ChangeLocaleController changeLocaleController =
         Get.put<ChangeLocaleController>(ChangeLocaleController());
 
-    return GetMaterialApp(
-      title: 'Ecommerce',
-      getPages: appPages,
-      initialBinding: AppBinding(),
-      debugShowCheckedModeBanner: false,
-      translations: AppLangsTranslations(),
-      theme: changeLocaleController.appTheme,
-      initialRoute: AppRoutesNames.kLanguage,
-      locale: changeLocaleController.language,
+    return SafeArea(
+      child: GetMaterialApp(
+        title: 'Ecommerce',
+        getPages: appPages,
+        initialBinding: AppBinding(),
+        debugShowCheckedModeBanner: false,
+        translations: AppLangsTranslations(),
+        theme: changeLocaleController.appTheme,
+        initialRoute: AppRoutesNames.kLanguage,
+        locale: changeLocaleController.language,
+      ),
     );
   }
 }

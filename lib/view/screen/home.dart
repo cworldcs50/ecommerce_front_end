@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import '../../core/constants/app_color.dart';
+import '../widget/home/custom_item.dart';
 import '../../controller/home_controller.dart';
 import '../../core/class/request_handler_view.dart';
 import '../widget/home/custom_offer_container.dart';
@@ -15,25 +17,66 @@ class HomeView extends StatelessWidget {
     return Scaffold(
       body: GetBuilder<HomeControllerImp>(
         builder: (controller) {
-          return RequestHandlerView(
-            status: controller.requestStatus,
-            child: ListView(
-              children: [
-                Container(
-                  margin: const EdgeInsets.only(top: 10),
-                  padding: const EdgeInsets.symmetric(horizontal: 15),
-                  child: const Row(
-                    spacing: 10,
-                    children: [
-                      Expanded(child: CustomSearchFormField()),
-                      CustomNotificationBill(),
-                    ],
+          return Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 15),
+            child: RequestHandlerView(
+              status: controller.requestStatus,
+              child: ListView(
+                children: [
+                  Container(
+                    margin: const EdgeInsets.only(top: 10),
+                    padding: const EdgeInsets.symmetric(horizontal: 15),
+                    child: const Row(
+                      spacing: 10,
+                      children: [
+                        Expanded(child: CustomSearchFormField()),
+                        CustomNotificationBill(),
+                      ],
+                    ),
                   ),
-                ),
-                const CustomOfferContainer(),
-
-                CustomCategoriesListView(categories: controller.categories),
-              ],
+                  const SizedBox(height: 10),
+                  SizedBox(
+                    width: 300,
+                    height: 220,
+                    child: ListView.separated(
+                      itemCount: 20,
+                      scrollDirection: Axis.horizontal,
+                      separatorBuilder:
+                          (context, index) => const SizedBox(width: 20),
+                      itemBuilder:
+                          (context, index) => const CustomOfferContainer(),
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  Container(
+                    height: 150,
+                    alignment: Alignment.center,
+                    child: CustomCategoriesListView(
+                      categories: controller.categories,
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  const Text(
+                    "Products For You",
+                    style: TextStyle(
+                      fontSize: 22,
+                      color: AppColor.primaryColorDark,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  SizedBox(
+                    height: 150,
+                    child: ListView.separated(
+                      itemCount: 20,
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) => const CustomItem(),
+                      separatorBuilder:
+                          (context, index) => const SizedBox(width: 20),
+                    ),
+                  ),
+                ],
+              ),
             ),
           );
         },
