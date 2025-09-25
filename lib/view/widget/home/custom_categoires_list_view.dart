@@ -15,7 +15,7 @@ class CustomCategoriesListView extends StatelessWidget {
       itemBuilder:
           (context, index) => const Categories(
             categoryName: "Laptop",
-            categoryImage: "assets/images/laptop.jpg",
+            categoryImage: "assets/images/laptop.svg",
           ),
       separatorBuilder: (context, index) => const SizedBox(width: 10),
     );

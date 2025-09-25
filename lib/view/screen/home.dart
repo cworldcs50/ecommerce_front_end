@@ -56,9 +56,9 @@ class HomeView extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 10),
-                  const Text(
-                    "Products For You",
-                    style: TextStyle(
+                  Text(
+                    "74".tr,
+                    style: const TextStyle(
                       fontSize: 22,
                       color: AppColor.primaryColorDark,
                       fontWeight: FontWeight.w700,

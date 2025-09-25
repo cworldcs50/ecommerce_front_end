@@ -1,3 +1,4 @@
+import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 
 class CustomSearchFormField extends StatelessWidget {
@@ -8,7 +9,7 @@ class CustomSearchFormField extends StatelessWidget {
     return TextFormField(
       decoration: InputDecoration(
         filled: true,
-        hintText: "Find Product",
+        hintText: "75".tr,
         fillColor: Colors.grey[200],
         hintStyle: const TextStyle(fontSize: 20),
         border: OutlineInputBorder(

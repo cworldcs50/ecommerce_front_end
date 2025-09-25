@@ -82,6 +82,8 @@ class AppLangsTranslations extends Translations {
       "71": "Email not Found!",
       "72": "please enter a new password!",
       "73": "try again!",
+      "74": "Products For You",
+      "75": "Find Product",
     },
     "ar": {
       "1": "اختر اللغة",
@@ -159,6 +161,8 @@ class AppLangsTranslations extends Translations {
       "71": "لم يتم العثور على البريد الإلكتروني!",
       "72": "الرجاء إدخال كلمة مرور جديدة!",
       "73": "!حاول مرة اخري",
+      "74": "منتجات لك",
+      "75": "البحث عن المنتج",
     },
   };
 }
