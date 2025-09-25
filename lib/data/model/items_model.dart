@@ -14,6 +14,10 @@ class ItemsModel extends Equatable {
     required this.itemsDescription,
     required this.itemsDescriptionAr,
     required this.itemsCreationTime,
+    required this.categoriesId,
+    required this.categoriesName,
+    required this.categoriesNameAr,
+    required this.categoriesCreationTime,
   });
 
   factory ItemsModel.fromJson(Map<String, dynamic> jsonData) => ItemsModel(
@@ -23,35 +27,43 @@ class ItemsModel extends Equatable {
     itemsImage: jsonData["items_image"],
     itemsActive: jsonData["items_active"],
     itemsNameAr: jsonData["items_name_ar"],
+    categoriesId: jsonData["categories_id"],
     itemsQuantity: jsonData["items_quantity"],
     itemsDiscount: jsonData["items_discount"],
     itemsCategory: jsonData["items_category"],
+    categoriesName: jsonData["categories_name"],
     itemsDescription: jsonData["items_description"],
+    categoriesNameAr: jsonData["categories_name_ar"],
     itemsCreationTime: jsonData["items_creation_time"],
     itemsDescriptionAr: jsonData["items_description_ar"],
+    categoriesCreationTime: jsonData["categories_creation_time"],
   );
 
-  final String itemsImage;
-  final String itemsCategory;
-  final String itemsCreationTime;
-  final int itemsId, itemsActive;
   final String itemsName, itemsNameAr;
+  final String itemsImage, itemsCategory;
+  final int itemsId, itemsActive, categoriesId;
+  final String categoriesName, categoriesNameAr;
   final String itemsDescription, itemsDescriptionAr;
   final double itemsQuantity, itemsPrice, itemsDiscount;
+  final String itemsCreationTime, categoriesCreationTime;
 
   @override
   List<Object?> get props => [
     itemsId,
     itemsName,
-    itemsPrice,
     itemsImage,
-    itemsActive,
+    itemsPrice,
     itemsNameAr,
+    itemsActive,
+    categoriesId,
     itemsQuantity,
     itemsDiscount,
     itemsCategory,
+    categoriesName,
     itemsDescription,
+    categoriesNameAr,
     itemsCreationTime,
     itemsDescriptionAr,
+    categoriesCreationTime,
   ];
 }
