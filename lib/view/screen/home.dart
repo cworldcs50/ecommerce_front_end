@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
-import '../../core/constants/app_color.dart';
 import '../widget/home/custom_item.dart';
+import '../../core/constants/app_color.dart';
 import '../../controller/home_controller.dart';
 import '../../core/class/request_handler_view.dart';
 import '../widget/home/custom_offer_container.dart';
