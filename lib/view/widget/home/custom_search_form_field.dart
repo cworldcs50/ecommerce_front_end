@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 
 class CustomSearchFormField extends StatelessWidget {
-  const CustomSearchFormField({required this.title, super.key});
+  const CustomSearchFormField({
+    required this.title,
+    required this.onPressedSearch,
+    super.key,
+  });
 
   final String title;
+  final void Function() onPressedSearch;
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +22,10 @@ class CustomSearchFormField extends StatelessWidget {
           borderSide: BorderSide.none,
           borderRadius: BorderRadius.circular(10),
         ),
-        prefixIcon: const Icon(size: 30, Icons.search),
+        prefixIcon: IconButton(
+          onPressed: onPressedSearch,
+          icon: const Icon(size: 30, Icons.search),
+        ),
       ),
     );
   }

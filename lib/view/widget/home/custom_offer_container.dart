@@ -2,8 +2,13 @@ import 'package:flutter/material.dart';
 import '../../../core/constants/app_color.dart';
 
 class CustomOfferContainer extends StatelessWidget {
-  const CustomOfferContainer({super.key});
+  const CustomOfferContainer({
+    required this.subTitle,
+    required this.title,
+    super.key,
+  });
 
+  final String title, subTitle;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -17,14 +22,14 @@ class CustomOfferContainer extends StatelessWidget {
       child: Stack(
         alignment: Alignment.center,
         children: [
-          const ListTile(
+          ListTile(
             title: Text(
-              "A summer surprise",
-              style: TextStyle(fontSize: 20, color: Colors.white),
+              title,
+              style: const TextStyle(fontSize: 20, color: Colors.white),
             ),
             subtitle: Text(
-              "Cashed 20%",
-              style: TextStyle(fontSize: 30, color: Colors.white),
+              subTitle,
+              style: const TextStyle(fontSize: 30, color: Colors.white),
             ),
           ),
           Positioned(

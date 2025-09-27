@@ -22,7 +22,11 @@ class HomeView extends StatelessWidget {
               status: controller.requestStatus,
               child: ListView(
                 children: [
-                  CustomAppBar(title: "75".tr, onPressed: () {}),
+                  CustomAppBar(
+                    title: "75".tr,
+                    onPressedIcon: () {},
+                    onPressedSearch: () {},
+                  ),
                   const SizedBox(height: 10),
                   SizedBox(
                     width: 300,
@@ -34,7 +38,10 @@ class HomeView extends StatelessWidget {
                       separatorBuilder:
                           (context, index) => const SizedBox(width: 20),
                       itemBuilder:
-                          (context, index) => const CustomOfferContainer(),
+                          (context, index) => const CustomOfferContainer(
+                            subTitle: "Cashed 20%",
+                            title: "A summer surprise",
+                          ),
                     ),
                   ),
                   const SizedBox(height: 10),
