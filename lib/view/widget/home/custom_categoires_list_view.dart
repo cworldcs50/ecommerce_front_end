@@ -15,6 +15,7 @@ class CustomCategoriesListView extends StatelessWidget {
       physics: const BouncingScrollPhysics(),
       itemBuilder:
           (context, index) => Categories(
+            onTap: () {},
             categoryName: categories[index].categoriesName,
             categoryImage: categories[index].categoriesImage,
           ),

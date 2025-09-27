@@ -16,6 +16,7 @@ class CustomItemsListView extends StatelessWidget {
       separatorBuilder: (context, index) => const SizedBox(width: 20),
       itemBuilder:
           (context, index) => CustomItem(
+            onTap: () {},
             imagePath: items[index].itemsImage,
             title: items[index].itemsName,
           ),

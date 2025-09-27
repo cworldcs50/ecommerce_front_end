@@ -7,29 +7,34 @@ class Categories extends StatelessWidget {
     super.key,
     required this.categoryImage,
     required this.categoryName,
+    required this.onTap,
   });
 
   final String categoryName, categoryImage;
+  final void Function() onTap;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       spacing: 10,
       children: [
-        Container(
-          width: 90,
-          height: 80,
-          decoration: BoxDecoration(
-            color: AppColor.primaryColorDark,
-            borderRadius: BorderRadius.circular(20),
-          ),
-          child: CachedNetworkImage(
-            width: 50,
-            height: 50,
-            imageUrl: categoryImage,
-            errorWidget:
-                (context, url, error) => const Icon(Icons.error, size: 50),
-            placeholder: (context, url) => const CircularProgressIndicator(),
+        InkWell(
+          onTap: onTap,
+          child: Container(
+            width: 90,
+            height: 80,
+            decoration: BoxDecoration(
+              color: AppColor.primaryColorDark,
+              borderRadius: BorderRadius.circular(20),
+            ),
+            child: CachedNetworkImage(
+              width: 50,
+              height: 50,
+              imageUrl: categoryImage,
+              errorWidget:
+                  (context, url, error) => const Icon(Icons.error, size: 50),
+              placeholder: (context, url) => const CircularProgressIndicator(),
+            ),
           ),
         ),
 

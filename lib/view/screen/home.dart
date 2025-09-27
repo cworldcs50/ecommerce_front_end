@@ -38,7 +38,8 @@ class HomeView extends StatelessWidget {
                       separatorBuilder:
                           (context, index) => const SizedBox(width: 20),
                       itemBuilder:
-                          (context, index) => const CustomOfferContainer(
+                          (context, index) => CustomOfferContainer(
+                            onTap: () {},
                             subTitle: "Cashed 20%",
                             title: "A summer surprise",
                           ),
@@ -52,15 +53,13 @@ class HomeView extends StatelessWidget {
                       categories: controller.categories,
                     ),
                   ),
-                  Text(
-                    "74".tr,
-                    style: const TextStyle(
-                      fontSize: 22,
-                      color: AppColor.primaryColorDark,
-                      fontWeight: FontWeight.w700,
-                    ),
-                  ),
+                  CustomSectionTitle(title: "74".tr),
                   const SizedBox(height: 5),
+                  SizedBox(
+                    height: 150,
+                    child: CustomItemsListView(items: controller.items),
+                  ),
+                  const CustomSectionTitle(title: "Offers"),
                   SizedBox(
                     height: 150,
                     child: CustomItemsListView(items: controller.items),
@@ -70,6 +69,24 @@ class HomeView extends StatelessWidget {
             ),
           );
         },
+      ),
+    );
+  }
+}
+
+class CustomSectionTitle extends StatelessWidget {
+  const CustomSectionTitle({super.key, required this.title});
+
+  final String title;
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      title,
+      style: const TextStyle(
+        fontSize: 22,
+        color: AppColor.primaryColorDark,
+        fontWeight: FontWeight.w700,
       ),
     );
   }
