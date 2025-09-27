@@ -1,6 +1,6 @@
 class AppApiLinks {
   static const String kBaseUrl =
-      "https://ecommercebackend-production-5f5c.up.railway.app";
+      "localhost";
   static const String kTest = "$kBaseUrl/test.php";
   static const String kSignUp = "$kBaseUrl/auth/sign_up.php";
   static const String kSignin = "$kBaseUrl/auth/sign_in.php";
