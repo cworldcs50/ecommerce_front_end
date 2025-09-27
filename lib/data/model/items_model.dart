@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import '../../core/constants/app_api_links.dart';
 
 class ItemsModel extends Equatable {
   const ItemsModel({
@@ -23,13 +24,13 @@ class ItemsModel extends Equatable {
   factory ItemsModel.fromJson(Map<String, dynamic> jsonData) => ItemsModel(
     itemsId: jsonData["items_id"],
     itemsName: jsonData["items_name"],
-    itemsPrice: jsonData["items_price"],
-    itemsImage: jsonData["items_image"],
+    itemsPrice: double.parse(jsonData["items_price"].toString()),
+    itemsImage: "${AppApiLinks.kItemsImages}/${jsonData["items_image"]}",
     itemsActive: jsonData["items_active"],
     itemsNameAr: jsonData["items_name_ar"],
     categoriesId: jsonData["categories_id"],
-    itemsQuantity: jsonData["items_quantity"],
-    itemsDiscount: jsonData["items_discount"],
+    itemsQuantity: double.parse(jsonData["items_quantity"].toString()),
+    itemsDiscount: double.parse(jsonData["items_discount"].toString()),
     itemsCategory: jsonData["items_category"],
     categoriesName: jsonData["categories_name"],
     itemsDescription: jsonData["items_description"],
@@ -40,8 +41,8 @@ class ItemsModel extends Equatable {
   );
 
   final String itemsName, itemsNameAr;
-  final String itemsImage, itemsCategory;
-  final int itemsId, itemsActive, categoriesId;
+  final String itemsImage;
+  final int itemsId, itemsActive, categoriesId, itemsCategory;
   final String categoriesName, categoriesNameAr;
   final String itemsDescription, itemsDescriptionAr;
   final double itemsQuantity, itemsPrice, itemsDiscount;

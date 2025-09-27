@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class CustomItem extends StatelessWidget {
   const CustomItem({required this.imagePath, required this.title, super.key});
@@ -12,11 +13,12 @@ class CustomItem extends StatelessWidget {
       children: [
         ClipRRect(
           borderRadius: BorderRadius.circular(20),
-          child: Image.network(
-            imagePath,
-            fit: BoxFit.cover,
-            height: 160,
+          child: CachedNetworkImage(
             width: 240,
+            height: 160,
+            imageUrl: imagePath,
+            errorWidget: (context, url, error) => const Icon(Icons.error),
+            placeholder: (context, url) => const CircularProgressIndicator(),
           ),
         ),
         Container(

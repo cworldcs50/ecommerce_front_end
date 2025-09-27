@@ -1,15 +1,16 @@
-import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 
 class CustomSearchFormField extends StatelessWidget {
-  const CustomSearchFormField({super.key});
+  const CustomSearchFormField({required this.title, super.key});
+
+  final String title;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       decoration: InputDecoration(
         filled: true,
-        hintText: "75".tr,
+        hintText: title,
         fillColor: Colors.grey[200],
         hintStyle: const TextStyle(fontSize: 20),
         border: OutlineInputBorder(

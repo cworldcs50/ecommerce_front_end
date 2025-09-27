@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import '../../../core/constants/app_color.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class Categories extends StatelessWidget {
   const Categories({
@@ -23,7 +23,14 @@ class Categories extends StatelessWidget {
             color: AppColor.primaryColorDark,
             borderRadius: BorderRadius.circular(20),
           ),
-          child: SvgPicture.network(categoryImage, width: 50, height: 50),
+          child: CachedNetworkImage(
+            width: 50,
+            height: 50,
+            imageUrl: categoryImage,
+            errorWidget:
+                (context, url, error) => const Icon(Icons.error, size: 50),
+            placeholder: (context, url) => const CircularProgressIndicator(),
+          ),
         ),
 
         Text(

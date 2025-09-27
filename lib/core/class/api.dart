@@ -13,10 +13,9 @@ class Api {
   Future<Either<RequestStatus, Map>> post(String url, Map dataForm) async {
     try {
       if (await checkInternetConnection()) {
-        http.Response response = await http.post(
-          Uri.parse(url),
-          body: dataForm,
-        );
+        http.Response response = await http
+            .post(Uri.parse(url), body: dataForm)
+            .timeout(const Duration(minutes: 5));
 
         if (response.statusCode >= 200 && response.statusCode < 300) {
           log(response.body);
