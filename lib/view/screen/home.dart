@@ -22,7 +22,7 @@ class HomeView extends StatelessWidget {
               status: controller.requestStatus,
               child: ListView(
                 children: [
-                  CustomAppBar(title: "75".tr),
+                  CustomAppBar(title: "75".tr, onPressed: () {}),
                   const SizedBox(height: 10),
                   SizedBox(
                     width: 300,
