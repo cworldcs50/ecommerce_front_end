@@ -1,9 +1,9 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
-import '../widget/home/custom_item.dart';
 import '../../core/constants/app_color.dart';
 import '../../controller/home_controller.dart';
 import '../../core/class/request_handler_view.dart';
+import '../widget/home/custom_items_list_view.dart';
 import '../widget/home/custom_offer_container.dart';
 import '../widget/home/custom_notification_bill.dart';
 import '../widget/home/custom_search_form_field.dart';
@@ -67,14 +67,7 @@ class HomeView extends StatelessWidget {
                   const SizedBox(height: 5),
                   SizedBox(
                     height: 150,
-                    child: ListView.separated(
-                      itemCount: 20,
-                      scrollDirection: Axis.horizontal,
-                      physics: const BouncingScrollPhysics(),
-                      separatorBuilder:
-                          (context, index) => const SizedBox(width: 20),
-                      itemBuilder: (context, index) => const CustomItem(),
-                    ),
+                    child: CustomItemsListView(items: controller.items),
                   ),
                 ],
               ),

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class CustomItem extends StatelessWidget {
-  const CustomItem({super.key});
+  const CustomItem({required this.imagePath, required this.title, super.key});
+
+  final String imagePath, title;
 
   @override
   Widget build(BuildContext context) {
@@ -10,8 +12,8 @@ class CustomItem extends StatelessWidget {
       children: [
         ClipRRect(
           borderRadius: BorderRadius.circular(20),
-          child: Image.asset(
-            "assets/images/laptop.jpg",
+          child: Image.network(
+            imagePath,
             fit: BoxFit.cover,
             height: 160,
             width: 240,
@@ -25,11 +27,11 @@ class CustomItem extends StatelessWidget {
             color: Colors.black.withValues(alpha: 0.4),
           ),
         ),
-        const Positioned(
+        Positioned(
           top: 10,
           child: Text(
-            "Laptop Surface Go 2",
-            style: TextStyle(color: Colors.white, fontSize: 20),
+            title,
+            style: const TextStyle(color: Colors.white, fontSize: 20),
           ),
         ),
       ],

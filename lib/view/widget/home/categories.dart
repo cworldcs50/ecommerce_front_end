@@ -23,7 +23,7 @@ class Categories extends StatelessWidget {
             color: AppColor.primaryColorDark,
             borderRadius: BorderRadius.circular(20),
           ),
-          child: SvgPicture.asset(categoryImage, width: 50, height: 50),
+          child: SvgPicture.network(categoryImage, width: 50, height: 50),
         ),
 
         Text(

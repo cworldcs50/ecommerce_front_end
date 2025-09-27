@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import '../data/model/items_model.dart';
 import '../core/services/services.dart';
 import '../data/model/categories_model.dart';
 import '../core/functions/handling_data.dart';
@@ -16,6 +17,7 @@ class HomeControllerImp extends HomeController {
   late final String username;
   RequestStatus? requestStatus;
   List<CategoriesModel> categories = [];
+  List<ItemsModel> items = [];
   final SharedPreferences sharedPrefs = Get.find<Services>().prefs;
   final HomeData _homeData = HomeData(api: Get.find<Services>().api);
 
@@ -43,12 +45,20 @@ class HomeControllerImp extends HomeController {
 
     if (requestStatus == RequestStatus.success) {
       if (response["status"] == "success") {
-        if (response["categories"]["status"] == "success") {
+        if (response["categories"]["status"] == "success" ||
+            response["categories"]["items"] == "success") {
           requestStatus = null;
+
           categories =
-              (response["categories"] as List)
+              (response["categories"]["data"] as List)
                   .map((category) => CategoriesModel.fromJson(category))
                   .toList();
+
+          items =
+              (response["items"]["data"] as List)
+                  .map((item) => ItemsModel.fromJson(item))
+                  .toList();
+
           update();
         } else {
           requestStatus = RequestStatus.noData;

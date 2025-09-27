@@ -14,9 +14,9 @@ class CustomCategoriesListView extends StatelessWidget {
       scrollDirection: Axis.horizontal,
       physics: const BouncingScrollPhysics(),
       itemBuilder:
-          (context, index) => const Categories(
-            categoryName: "Laptop",
-            categoryImage: "assets/images/laptop.svg",
+          (context, index) => Categories(
+            categoryName: categories[index].categoriesName,
+            categoryImage: categories[index].categoriesImage,
           ),
       separatorBuilder: (context, index) => const SizedBox(width: 10),
     );
