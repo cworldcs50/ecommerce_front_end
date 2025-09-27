@@ -8,16 +8,16 @@ import '../data/datasource/remote/home/home_data.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 abstract class HomeController extends GetxController {
-  Future<void> getCategories();
+  Future<void> getData();
   Future<void> initialData();
 }
 
 class HomeControllerImp extends HomeController {
   late final int id;
   late final String username;
+  List<ItemsModel> items = [];
   RequestStatus? requestStatus;
   List<CategoriesModel> categories = [];
-  List<ItemsModel> items = [];
   final SharedPreferences sharedPrefs = Get.find<Services>().prefs;
   final HomeData _homeData = HomeData(api: Get.find<Services>().api);
 
@@ -25,7 +25,7 @@ class HomeControllerImp extends HomeController {
   Future<void> onInit() async {
     super.onInit();
     await initialData();
-    await getCategories();
+    await getData();
   }
 
   @override
@@ -35,18 +35,18 @@ class HomeControllerImp extends HomeController {
   }
 
   @override
-  Future<void> getCategories() async {
+  Future<void> getData() async {
     requestStatus = RequestStatus.loading;
     update();
 
-    final response = await _homeData.getCategories();
+    final response = await _homeData.getData();
 
     requestStatus = handlingData(response);
 
     if (requestStatus == RequestStatus.success) {
       if (response["status"] == "success") {
-        if (response["categories"]["status"] == "success" ||
-            response["categories"]["items"] == "success") {
+        if (response["categories"]["status"] == "success" &&
+            response["items"]["status"] == "success") {
           requestStatus = null;
 
           categories =

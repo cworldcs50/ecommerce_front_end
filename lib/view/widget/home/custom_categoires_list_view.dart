@@ -10,7 +10,7 @@ class CustomCategoriesListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
-      itemCount: 10,
+      itemCount: categories.length,
       scrollDirection: Axis.horizontal,
       physics: const BouncingScrollPhysics(),
       itemBuilder:

@@ -6,7 +6,7 @@ class HomeData {
 
   final Api api;
 
-  Future<dynamic> getCategories() async {
+  Future<dynamic> getData() async {
     final result = await api.post(AppApiLinks.kHome, {});
 
     return result.fold((l) => l, (r) => r);

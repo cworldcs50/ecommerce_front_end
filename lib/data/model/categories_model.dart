@@ -5,8 +5,8 @@ import '../../core/constants/app_api_links.dart';
 class CategoriesModel extends Equatable {
   const CategoriesModel({
     required this.categoriesId,
-    required this.categoriesImage,
     required this.categoriesName,
+    required this.categoriesImage,
     required this.categoriesNameAr,
     required this.categoriesCreationTime,
   });
