@@ -1,32 +1,31 @@
 import 'package:equatable/equatable.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import '../../core/services/services.dart';
 
 class UserModel extends Equatable {
   UserModel({
     required this.id,
-    required this.username,
     required this.email,
-    required this.password,
     required this.phone,
+    required this.username,
+    required this.password,
   }) {
     toSharedPrefs();
   }
 
   final int id;
-  final String username;
   final String email;
-  final String password;
   final String phone;
+  final String username;
+  final String password;
 
   factory UserModel.fromJson(Map<String, dynamic> jsonData) => UserModel(
     id: jsonData["users_id"],
-    username: jsonData["users_name"],
-    email: jsonData["users_email"],
-    password: jsonData["users_password"],
     phone: jsonData["users_phone"],
+    email: jsonData["users_email"],
+    username: jsonData["users_name"],
+    password: jsonData["users_password"],
   );
 
   Future<void> toSharedPrefs() async {

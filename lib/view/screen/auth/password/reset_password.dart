@@ -18,9 +18,10 @@ class ResetPassword extends StatelessWidget {
         title: Text("38".tr, style: Theme.of(context).textTheme.headlineSmall),
         centerTitle: true,
         elevation: 0.0,
-        backgroundColor: AppColor.backgroundColor,
+        backgroundColor: Colors.transparent,
       ),
 
+      backgroundColor: AppColor.backgroundColor,
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 40.0),
         child: GetBuilder<ResetPasswordControllerImp>(

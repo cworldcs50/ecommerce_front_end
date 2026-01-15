@@ -20,14 +20,15 @@ class SignUpControllerImp extends SignUpController {
   late final TextEditingController phoneController;
   late final TextEditingController usernameController;
   late final TextEditingController passwordController;
-  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  late final GlobalKey<FormState> formKey;
 
   @override
   void onInit() {
-    usernameController = TextEditingController();
     emailController = TextEditingController();
     phoneController = TextEditingController();
+    usernameController = TextEditingController();
     passwordController = TextEditingController();
+    formKey = GlobalKey<FormState>();
     signUpData = SignUpData(api: Get.find<Services>().api);
     super.onInit();
   }
@@ -39,10 +40,10 @@ class SignUpControllerImp extends SignUpController {
       update();
 
       final dynamic result = await signUpData.addUser(
-        usernameController.text,
-        passwordController.text,
-        emailController.text,
-        phoneController.text,
+        email: emailController.text.trim(),
+        phone: phoneController.text.trim(),
+        username: usernameController.text.trim(),
+        password: passwordController.text.trim(),
       );
 
       requestStatus = handlingData(result);
@@ -50,6 +51,8 @@ class SignUpControllerImp extends SignUpController {
       if (requestStatus == RequestStatus.success) {
         if (result['status'] == 'success') {
           await goToVerifyCodeSignUp();
+          requestStatus = null;
+          update();
         } else {
           requestStatus = null;
           update();
@@ -61,6 +64,7 @@ class SignUpControllerImp extends SignUpController {
           requestStatus = null;
           update();
         });
+        await Get.defaultDialog(title: "64".tr, middleText: "65".tr);
       }
     }
   }
@@ -68,22 +72,23 @@ class SignUpControllerImp extends SignUpController {
   @override
   Future<void> goToVerifyCodeSignUp() async => await Get.offNamed(
     AppRoutesNames.kVerifyCodeSignUp,
-    arguments: {"email": emailController.text},
+    arguments: {"email": emailController.text.trim()},
   );
 
   @override
   void onClose() {
-    usernameController.dispose();
     emailController.dispose();
     phoneController.dispose();
     passwordController.dispose();
+    usernameController.dispose();
     super.onClose();
   }
 
   @override
   Future<void> goToCheckEmail() async =>
-      await Get.offNamed(AppRoutesNames.kCheckEmail);
+      await Get.toNamed(AppRoutesNames.kCheckEmail);
 
   @override
-  Future<void> goToSignIn() async => await Get.offNamed(AppRoutesNames.kLogin);
+  Future<void> goToSignIn() async =>
+      await Get.offAllNamed(AppRoutesNames.kLogin);
 }

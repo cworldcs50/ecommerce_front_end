@@ -13,11 +13,12 @@ class ForgetPasswordVerifyCode extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColor.backgroundColor,
       appBar: AppBar(
         title: Text("33".tr, style: Theme.of(context).textTheme.headlineSmall),
         centerTitle: true,
         elevation: 0.0,
-        backgroundColor: AppColor.backgroundColor,
+        backgroundColor: Colors.transparent,
       ),
 
       body: Padding(

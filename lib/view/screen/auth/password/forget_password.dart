@@ -14,10 +14,11 @@ class ForgetPassword extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColor.backgroundColor,
       appBar: AppBar(
         elevation: 0.0,
         centerTitle: true,
-        backgroundColor: AppColor.backgroundColor,
+        backgroundColor: Colors.transparent,
         title: Text("29".tr, style: Theme.of(context).textTheme.headlineSmall),
       ),
       body: Padding(

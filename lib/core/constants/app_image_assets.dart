@@ -5,11 +5,12 @@ class AppImageAssets {
   static const String onBoardingImageTwo = "$rootImages/payment.png";
   static const String onBoardingImageOne = "$rootImages/purchase.png";
 
-  static const String loading = "assets/lotties/loading.json";
-  static const String noData = "assets/lotties/no_data.json";
-  static const String offline = "assets/lotties/offline.json";
-  static const String serverFailure = "assets/lotties/server_failure.json";
-  static const String failure = "assets/lotties/failure.json";
-
+  static const String noData = "$rootLotties/no_data.json";
+  static const String loading = "$rootLotties/loading.json";
+  static const String offline = "$rootLotties/offline.json";
+  static const String failure = "$rootLotties/failure.json";
+  static const String serverFailure = "$rootLotties/server_failure.json";
   static const String onBoardingImageThree = "$rootImages/onboardingthree.PNG";
+  static const String laptop = "$rootImages/laptop.jpg";
+  static const String avatar = "$rootImages/avatar.png";
 }

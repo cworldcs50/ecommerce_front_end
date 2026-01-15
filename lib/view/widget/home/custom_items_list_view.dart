@@ -1,3 +1,4 @@
+import '../../../core/functions/translate_data_base.dart';
 import 'custom_item.dart';
 import 'package:flutter/material.dart';
 import '../../../data/model/items_model.dart';
@@ -18,7 +19,10 @@ class CustomItemsListView extends StatelessWidget {
           (context, index) => CustomItem(
             onTap: () {},
             imagePath: items[index].itemsImage,
-            title: items[index].itemsName,
+            title: translateDataBase(
+              items[index].itemsName,
+              items[index].itemsNameAr,
+            ),
           ),
     );
   }

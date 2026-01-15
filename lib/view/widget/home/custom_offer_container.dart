@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import '../../../core/constants/app_color.dart';
+import '../../../core/services/services.dart';
 
 class CustomOfferContainer extends StatelessWidget {
   const CustomOfferContainer({
@@ -39,7 +41,10 @@ class CustomOfferContainer extends StatelessWidget {
             ),
             Positioned(
               top: -25,
-              right: -20,
+              right:
+                  Get.find<Services>().prefs.getString("language") == "en"
+                      ? -20
+                      : 220,
               child: Container(
                 width: 180,
                 height: 180,

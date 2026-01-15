@@ -1,11 +1,14 @@
 class AppRoutesNames {
   static const String kHome = "/home";
   static const String kText = "/test";
+  static const String kItems = "/items";
   static const String kLogin = '/login';
-  static const String kOnBoarding = "/";
+  static const String kItemsDetails = "/itemsDetails";
   static const String kSignUp = "/signUp";
   static const String kTestData = "/testData";
-  static const String kLanguage = "/language";
+  static const String kCart = "/cart";
+  static const String kLanguage = "/";
+  static const String kOnBoarding = "/onBoarding";
   static const String kCheckEmail = "/checkEmail";
   static const String kResetPassword = "/resetPassword";
   static const String kSuccessSignUp = "/successSignUp";

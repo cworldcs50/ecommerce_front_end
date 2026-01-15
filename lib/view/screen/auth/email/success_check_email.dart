@@ -16,9 +16,10 @@ class SuccessCheckEmail extends StatelessWidget {
       appBar: AppBar(
         elevation: 0.0,
         centerTitle: true,
-        backgroundColor: AppColor.backgroundColor,
+        backgroundColor: Colors.transparent,
         title: Text("43".tr, style: Theme.of(context).textTheme.headlineSmall),
       ),
+      backgroundColor: AppColor.backgroundColor,
       body: Container(
         padding: const EdgeInsets.symmetric(horizontal: 20),
         alignment: Alignment.center,

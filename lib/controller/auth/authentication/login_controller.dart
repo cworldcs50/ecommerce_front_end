@@ -12,8 +12,9 @@ abstract class LoginController extends GetxController {
   Future<void> login();
   Future<void> goToSignUp();
   Future<void> goToHomeView();
-  String? validateInputs(String? password);
   Future<void> goToForgetPassword();
+  Future<void> goToVerifyCodeSignIn();
+  String? validateInputs(String? password);
 }
 
 class LoginControllerImp extends LoginController {
@@ -49,11 +50,18 @@ class LoginControllerImp extends LoginController {
 
       if (requestStatus == RequestStatus.success) {
         if (result['status'] == 'success') {
-          await Future.wait([
-            sharedPrefs.setBool("isUserSignedIn", true),
-            UserModel.fromJson(result["data"]).toSharedPrefs(),
-            goToHomeView(),
-          ]);
+          await UserModel.fromJson(result["data"]).toSharedPrefs();
+
+          if (result["data"]["users_approve"] == 1) {
+            await sharedPrefs.setBool("isUserSignedIn", true);
+            requestStatus = null;
+            await goToHomeView();
+            update();
+          } else {
+            requestStatus = null;
+            await goToVerifyCodeSignIn();
+            update();
+          }
         } else {
           requestStatus = null;
           update();
@@ -73,12 +81,18 @@ class LoginControllerImp extends LoginController {
   Future<void> goToSignUp() async => await Get.offNamed(AppRoutesNames.kSignUp);
 
   @override
-  goToForgetPassword() async =>
-      await Get.offNamed(AppRoutesNames.kForgetPassword);
+  Future<void> goToForgetPassword() async =>
+      await Get.toNamed(AppRoutesNames.kForgetPassword);
 
   @override
   Future<void> goToHomeView() async =>
       await Get.offAllNamed(AppRoutesNames.kHome);
+
+  @override
+  Future<void> goToVerifyCodeSignIn() async => await Get.offNamed(
+    AppRoutesNames.kVerifyCodeSignUp,
+    arguments: {"email": emailController.text.trim()},
+  );
 
   @override
   void onClose() {

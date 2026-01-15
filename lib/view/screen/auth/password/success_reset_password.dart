@@ -13,10 +13,11 @@ class SuccessResetPassword extends StatelessWidget {
         Get.find<SuccessResetPasswordControllerImp>();
 
     return Scaffold(
+      backgroundColor: AppColor.backgroundColor,
       appBar: AppBar(
         elevation: 0.0,
         centerTitle: true,
-        backgroundColor: AppColor.backgroundColor,
+        backgroundColor: Colors.transparent,
         title: Text("43".tr, style: Theme.of(context).textTheme.headlineSmall),
       ),
       body: Container(

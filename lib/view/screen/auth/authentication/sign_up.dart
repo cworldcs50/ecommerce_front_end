@@ -17,8 +17,9 @@ class SignUp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColor.backgroundColor,
       appBar: AppBar(
-        backgroundColor: AppColor.backgroundColor,
+        backgroundColor: Colors.transparent,
         centerTitle: true,
         elevation: 0.0,
         title: Text("21".tr, style: Theme.of(context).textTheme.headlineSmall),

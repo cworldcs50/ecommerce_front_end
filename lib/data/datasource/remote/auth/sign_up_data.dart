@@ -9,10 +9,8 @@ class SignUpData {
   final Api api;
 
   dynamic addUser(
-    String username,
-    String password,
-    String email,
-    String phone,
+    {required String username, required String password, required String email, required String phone,}
+    
   ) async {
     Either<RequestStatus, Map> response = await api.post(AppApiLinks.kSignUp, {
       "userEmail": email,

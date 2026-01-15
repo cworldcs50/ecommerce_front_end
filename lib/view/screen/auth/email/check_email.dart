@@ -17,10 +17,11 @@ class CheckEmail extends StatelessWidget {
     final controller = Get.find<CheckEmailControllerImp>();
 
     return Scaffold(
+      backgroundColor: AppColor.backgroundColor,
       appBar: AppBar(
+        backgroundColor: Colors.transparent,
         elevation: 0.0,
         centerTitle: true,
-        backgroundColor: AppColor.backgroundColor,
         title: Text("59".tr, style: Theme.of(context).textTheme.headlineSmall),
       ),
       body: Padding(

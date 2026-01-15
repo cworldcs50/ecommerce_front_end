@@ -1,8 +1,8 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
-import '../../core/constants/app_routes_names.dart';
-import '../widget/language/custom_lang_button.dart';
-import '../../core/localization/change_locale_controller.dart';
+import '../../../core/constants/app_routes_names.dart';
+import '../../widget/language/custom_lang_button.dart';
+import '../../../core/localization/change_locale_controller.dart';
 
 class Language extends GetView<ChangeLocaleController> {
   const Language({super.key});

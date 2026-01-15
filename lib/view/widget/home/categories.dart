@@ -32,8 +32,31 @@ class Categories extends StatelessWidget {
               height: 50,
               imageUrl: categoryImage,
               errorWidget:
-                  (context, url, error) => const Icon(Icons.error, size: 50),
-              placeholder: (context, url) => const CircularProgressIndicator(),
+                  (context, url, error) => const Icon(
+                    Icons.error,
+                    size: 50,
+                    color: AppColor.primaryColorLight,
+                  ),
+              placeholder:
+                  (context, url) => ShaderMask(
+                    shaderCallback:
+                        (bounds) => LinearGradient(
+                          colors: [
+                            Colors.grey[300]!,
+                            Colors.grey[100]!,
+                            Colors.grey[300]!,
+                          ],
+                          stops: const [0.0, 0.5, 1.0],
+                        ).createShader(bounds),
+                    child: Container(
+                      width: 90,
+                      height: 80,
+                      decoration: BoxDecoration(
+                        color: AppColor.primaryColorDark,
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                    ),
+                  ),
             ),
           ),
         ),

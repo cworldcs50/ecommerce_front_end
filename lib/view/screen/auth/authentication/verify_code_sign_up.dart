@@ -17,9 +17,9 @@ class VerifyCodeSignUp extends StatelessWidget {
         title: Text("33".tr, style: Theme.of(context).textTheme.headlineSmall),
         centerTitle: true,
         elevation: 0.0,
-        backgroundColor: AppColor.backgroundColor,
+        backgroundColor: Colors.transparent,
       ),
-
+      backgroundColor: AppColor.backgroundColor,
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 40.0),
         child: GetBuilder<VerifyCodeSignUpImp>(
@@ -36,7 +36,7 @@ class VerifyCodeSignUp extends StatelessWidget {
                   ),
                   const SizedBox(height: 30),
                   OtpTextField(
-                    fieldWidth: 50,
+                    fieldWidth: 48,
                     numberOfFields: 5,
                     showFieldAsBox: true,
                     borderColor: const Color(0xFF512DA8),
@@ -46,6 +46,20 @@ class VerifyCodeSignUp extends StatelessWidget {
                             await controller.checkCode(verificationCode),
                   ),
                   const SizedBox(height: 40),
+                  TextButton(
+                    style: TextButton.styleFrom(
+                      alignment: Alignment.centerRight,
+                    ),
+                    onPressed:
+                        () async => await controller.resendVerificationCode(),
+                    child: Text(
+                      "89".tr,
+                      textAlign: TextAlign.right,
+                      style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                        fontWeight: FontWeight.normal,
+                      ),
+                    ),
+                  ),
                 ],
               ),
             );

@@ -1,21 +1,49 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../data/model/items_model.dart';
-import '../core/services/services.dart';
-import '../data/model/categories_model.dart';
-import '../core/functions/handling_data.dart';
-import '../core/constants/enums/request_status.dart';
-import '../data/datasource/remote/home/home_data.dart';
+import '../../core/constants/app_routes_names.dart';
+import '../../data/model/items_model.dart';
+import '../../core/services/services.dart';
+import '../../data/model/categories_model.dart';
+import '../../core/functions/handling_data.dart';
+import '../../core/constants/enums/request_status.dart';
+import '../../data/datasource/remote/home/home_data.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import '../../view/screen/favorites/favorites.dart';
+import '../../view/screen/home/home_body.dart';
+import '../../view/screen/profile.dart';
+import '../../view/screen/settings/settings.dart';
 
 abstract class HomeController extends GetxController {
   Future<void> getData();
   Future<void> initialData();
+  void changeToPage(int pageIndex);
+  Future<void> goToCategoryItems(
+    List categories,
+    int selectedCat,
+    int categoryId,
+  );
+  Future<void> goToCart();
 }
 
 class HomeControllerImp extends HomeController {
   late final int id;
+  int currentIndex = 0;
   late final String username;
   List<ItemsModel> items = [];
+  final List<Widget> pages = const [
+    HomeBody(),
+    Settings(),
+    Profile(),
+    Favorites(),
+  ];
+  final List<String> bottomAppBarBtnsTitle = const ["80", "78", "81", "79"];
+  final List<IconData> bottomAppBarBtnsIcons = [
+    Icons.home,
+    Icons.settings,
+    Icons.person_pin_sharp,
+    Icons.favorite,
+  ];
   RequestStatus? requestStatus;
   List<CategoriesModel> categories = [];
   final SharedPreferences sharedPrefs = Get.find<Services>().prefs;
@@ -77,4 +105,30 @@ class HomeControllerImp extends HomeController {
       }
     }
   }
+
+  @override
+  void changeToPage(int pageIndex) {
+    currentIndex = pageIndex;
+    update();
+  }
+
+  @override
+  Future<void> goToCategoryItems(
+    List categories,
+    int selectedCat,
+    int itemsCategoryId,
+  ) async => await Get.toNamed(
+    AppRoutesNames.kItems,
+    arguments: {
+      "categories": categories,
+      "selectedCat": selectedCat,
+      "itemsCategoryId": itemsCategoryId,
+    },
+  );
+
+  @override
+  Future<void> goToCart() async =>
+      await Get.toNamed(AppRoutesNames.kCart, arguments: {
+        
+      });
 }

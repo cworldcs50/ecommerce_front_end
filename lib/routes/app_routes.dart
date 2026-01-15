@@ -1,11 +1,14 @@
 import 'package:get/get.dart';
 import '../view/screen/auth/authentication/success_sign_up.dart';
-import '../view/screen/home.dart';
+import '../view/screen/cart/cart.dart';
+import '../view/screen/home/home.dart';
+import '../view/screen/items/items.dart';
+import '../view/screen/items/items_details.dart';
 import '../view/screen/test/test.dart';
-import '../view/screen/language.dart';
+import '../view/screen/language/language.dart';
 import 'package:flutter/cupertino.dart';
 import '../view/screen/test/test_data_view.dart';
-import '../view/screen/auth/on_boarding.dart';
+import '../view/screen/on_boarding.dart';
 import 'middlewares/language_middleware.dart';
 import '../core/constants/app_routes_names.dart';
 import 'middlewares/on_boarding_middleware.dart';
@@ -76,5 +79,8 @@ final List<GetPage<Widget>> appPages = [
     name: AppRoutesNames.kSuccessSignUp,
     page: () => const SuccessSignUp(),
   ),
-  GetPage(name: AppRoutesNames.kHome, page: () => const HomeView()),
+  GetPage(name: AppRoutesNames.kHome, page: () => const Home()),
+  GetPage(name: AppRoutesNames.kItems, page: () => const Items()),
+  GetPage(name: AppRoutesNames.kItemsDetails, page: () => const ItemsDetails()),
+  GetPage(name: AppRoutesNames.kCart, page: () => const Cart()),
 ];

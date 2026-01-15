@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
+import '../../../core/constants/app_color.dart';
+
 class CustomItem extends StatelessWidget {
   const CustomItem({
     required this.imagePath,
@@ -25,8 +27,32 @@ class CustomItem extends StatelessWidget {
               width: 240,
               height: 160,
               imageUrl: imagePath,
-              errorWidget: (context, url, error) => const Icon(Icons.error),
-              placeholder: (context, url) => const CircularProgressIndicator(),
+              errorWidget:
+                  (context, url, error) => const Icon(
+                    Icons.error,
+                    color: AppColor.primaryColorLight,
+                    size: 70,
+                  ),
+              placeholder:
+                  (context, url) => ShaderMask(
+                    shaderCallback:
+                        (bounds) => LinearGradient(
+                          colors: [
+                            Colors.grey[300]!,
+                            Colors.grey[100]!,
+                            Colors.grey[300]!,
+                          ],
+                          stops: const [0.0, 0.5, 1.0],
+                        ).createShader(bounds),
+                    child: Container(
+                      width: 90,
+                      height: 80,
+                      decoration: BoxDecoration(
+                        color: AppColor.primaryColorDark,
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                    ),
+                  ),
             ),
           ),
           Container(
