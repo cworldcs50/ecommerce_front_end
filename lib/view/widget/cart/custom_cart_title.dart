@@ -1,15 +1,16 @@
-import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 
 class CustomCartTitle extends StatelessWidget {
-  const CustomCartTitle({super.key});
+  const CustomCartTitle({required this.onPressed, super.key});
+
+  final void Function() onPressed;
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
         IconButton(
-          onPressed: () => Get.back(),
+          onPressed: onPressed,
           icon: const Icon(Icons.arrow_back),
         ),
         const Expanded(

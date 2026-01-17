@@ -44,14 +44,14 @@ class ItemsDetails extends GetView<ItemsDetailsControllerImp> {
                         const SizedBox(height: 10),
                         CustomPriceAndQuantityOfItemRow(
                           count: int.parse(controller.itemCount),
-                          price: Get.arguments["itemDetails"].itemsPrice,
+                          price: controller.item.itemsPrice,
                           add:
                               () async => controller.addItemToCart(
-                                "${Get.arguments["itemDetails"].itemsId}",
+                                "${controller.item.itemsId}",
                               ),
                           remove:
                               () async => controller.removeCartItem(
-                                "${Get.arguments["itemDetails"].itemsId}",
+                                "${controller.item.itemsId}",
                               ),
                         ),
                         const SizedBox(height: 10),

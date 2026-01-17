@@ -44,7 +44,7 @@ class ItemsDetailsControllerImp extends ItemsDetailsController {
 
     final response = await _cartData.getCartItemsCount(
       _userId,
-      "${Get.arguments["itemDetails"].itemsId}",
+      "${item.itemsId}",
     );
 
     update();

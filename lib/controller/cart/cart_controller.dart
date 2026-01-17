@@ -4,6 +4,7 @@ import '../../core/services/services.dart';
 import '../../core/functions/handling_data.dart';
 import '../../core/constants/enums/request_status.dart';
 import '../../data/datasource/remote/cart/cart_data.dart';
+import '../items/items_details_controller.dart';
 
 abstract class CartController extends GetxController {
   Future<void> initialData();
@@ -11,6 +12,7 @@ abstract class CartController extends GetxController {
   Future<void> addItemToCart(String itemId);
   Future<void> removeCartItem(String itemId);
   Future<void> viewCartItems();
+  void returnToItemDetails();
 }
 
 class CartControllerImp extends CartController {
@@ -20,6 +22,7 @@ class CartControllerImp extends CartController {
   RequestStatus? requestStatus;
   late final CartData _cartData;
   late List<CartModel> cartItems;
+  late final ItemsDetailsControllerImp _itemsDetailsControllerImp;
 
   @override
   Future<void> onInit() async {
@@ -32,6 +35,7 @@ class CartControllerImp extends CartController {
     cartItems = [];
     totalCount = 0;
     totalPrice = 0;
+    _itemsDetailsControllerImp = Get.find<ItemsDetailsControllerImp>();
     _userId = Get.find<Services>().prefs.getInt("user_id")!;
     _cartData = CartData(api: Get.find<Services>().api);
     await viewCartItems();
@@ -56,6 +60,8 @@ class CartControllerImp extends CartController {
     } else {
       Get.showSnackbar(GetSnackBar(title: "${"67".tr}!", message: "92".tr));
     }
+
+    await viewCartItems();
   }
 
   @override
@@ -74,6 +80,8 @@ class CartControllerImp extends CartController {
     } else {
       Get.showSnackbar(GetSnackBar(title: "${"67".tr}!", message: "94".tr));
     }
+
+    await viewCartItems();
   }
 
   @override
@@ -94,12 +102,30 @@ class CartControllerImp extends CartController {
 
         totalPrice = request["CountAndPriceData"]["total_price"];
         totalCount = request["CountAndPriceData"]["total_count"];
+      } else {
+        resetValues();
       }
     } else {
       requestStatus = RequestStatus.failure;
+      await Future.delayed(const Duration(seconds: 2), () {
+        requestStatus = null;
+        update();
+      });
     }
-    
+
     requestStatus = null;
     update();
+  }
+
+  void resetValues() {
+    cartItems = [];
+    totalCount = 0;
+    totalPrice = 0;
+  }
+
+  @override
+  void returnToItemDetails() async {
+    await _itemsDetailsControllerImp.getItemsCount();
+    Get.back();
   }
 }
