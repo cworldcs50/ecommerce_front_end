@@ -20,13 +20,21 @@ class Favorites extends StatelessWidget {
               CustomAppBar(
                 title: "75".tr,
                 onPressedIcon: () {},
-                onPressedSearch: () {},
+                onChanged: controller.checkSearch,
+                controller: controller.searchController,
+                onPressedSearch: controller.onSearchItems,
+                onFieldSubmitted: (_) async => await controller.onSearchItems(),
               ),
               const SizedBox(height: 15),
               Expanded(
                 child: RequestHandlerView(
                   status: controller.getFavoritesItemsRequestStatus,
-                  child: CustomFavoritesGrid(items: controller.favoritesItems),
+                  child:
+                      controller.isSearch
+                          ? CustomFavoritesGrid(items: controller.searchedItems)
+                          : CustomFavoritesGrid(
+                            items: controller.favoritesItems,
+                          ),
                 ),
               ),
             ],

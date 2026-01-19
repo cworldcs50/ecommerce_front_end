@@ -9,10 +9,10 @@ import '../items/items_details_controller.dart';
 abstract class CartController extends GetxController {
   Future<void> initialData();
   Future<void> getCartItems();
+  Future<void> viewCartItems();
+  Future<void> returnToItemDetails();
   Future<void> addItemToCart(String itemId);
   Future<void> removeCartItem(String itemId);
-  Future<void> viewCartItems();
-  void returnToItemDetails();
 }
 
 class CartControllerImp extends CartController {
@@ -124,7 +124,7 @@ class CartControllerImp extends CartController {
   }
 
   @override
-  void returnToItemDetails() async {
+  Future<void> returnToItemDetails() async {
     await _itemsDetailsControllerImp.getItemsCount();
     Get.back();
   }

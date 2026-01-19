@@ -3,16 +3,25 @@ import 'package:flutter/material.dart';
 class CustomSearchFormField extends StatelessWidget {
   const CustomSearchFormField({
     required this.title,
+    required this.onChanged,
+    required this.controller,
     required this.onPressedSearch,
+    required this.onFieldSubmitted,
     super.key,
   });
 
   final String title;
+  final void Function(String) onChanged;
   final void Function() onPressedSearch;
+  final TextEditingController controller;
+  final void Function(String) onFieldSubmitted;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      controller: controller,
+      onFieldSubmitted: onFieldSubmitted,
+      onChanged: onChanged,
       decoration: InputDecoration(
         filled: true,
         hintText: title,

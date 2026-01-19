@@ -6,13 +6,19 @@ class CustomAppBar extends StatelessWidget {
   const CustomAppBar({
     super.key,
     required this.title,
+    required this.controller,
     required this.onPressedIcon,
+    required this.onChanged,
     required this.onPressedSearch,
+    required this.onFieldSubmitted,
   });
 
   final String title;
   final void Function() onPressedIcon;
+  final void Function(String) onChanged;
   final void Function() onPressedSearch;
+  final TextEditingController controller;
+  final void Function(String) onFieldSubmitted;
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +30,10 @@ class CustomAppBar extends StatelessWidget {
         children: [
           Expanded(
             child: CustomSearchFormField(
+              onFieldSubmitted: onFieldSubmitted,
               title: title,
+              onChanged: onChanged,
+              controller: controller,
               onPressedSearch: onPressedSearch,
             ),
           ),

@@ -1,28 +1,36 @@
 import 'package:get/get.dart';
-import '../../core/constants/app_routes_names.dart';
-import '../../core/constants/enums/request_status.dart';
-import '../../core/functions/handling_data.dart';
-import '../../core/services/services.dart';
-import '../../data/datasource/remote/items/items.dart';
+import 'package:flutter/widgets.dart';
 import '../../data/model/items_model.dart';
+import '../../core/services/services.dart';
+import '../../core/functions/handling_data.dart';
+import '../../core/constants/app_routes_names.dart';
+import '../../data/datasource/remote/items/items.dart';
+import '../../core/constants/enums/request_status.dart';
+import '../../data/datasource/remote/search/search.dart';
 
 abstract class ItemsController extends GetxController {
+  void addToFavorites();
   Future<void> getItems();
   Future<void> initialData();
+  Future<void> onSearchItems();
+  void checkSearch(String val);
   Future<void> itemDetails(ItemsModel item);
   Future<void> changeCat(int val, int categoryId);
-  void addToFavorites();
 }
 
 class ItemsControllerImp extends ItemsController {
+  late bool isSearch;
   late int selectedId;
-  List categories = [];
-  late int itemsCategoryId;
   late bool isFavorite;
+  List categories = [];
+  late final int userId;
+  late int itemsCategoryId;
   List<ItemsModel> items = [];
   RequestStatus? requestStatus;
-  late final int userId;
   late final ItemsData _itemsData;
+  List<ItemsModel> searchedItems = [];
+  late final TextEditingController searchController;
+  final SearchData _searchData = SearchData(api: Get.find<Services>().api);
 
   @override
   Future<void> onInit() async {
@@ -31,9 +39,74 @@ class ItemsControllerImp extends ItemsController {
   }
 
   @override
+  void checkSearch(String val) {
+    if (searchController.text.isEmpty) {
+      isSearch = false;
+    }
+    update();
+  }
+
+  Future<void> _getSearchedItems() async {
+    requestStatus = RequestStatus.loading;
+
+    final response = await _searchData.search(searchController.text);
+
+    final result = handlingData(response);
+
+    if (RequestStatus.success == result) {
+      isSearch = true;
+      if (response["status"] == "success") {
+        searchedItems =
+            (response["data"] as List)
+                .map((item) => ItemsModel.fromJson(item))
+                .where((item) => itemsCategoryId == item.itemsCategory)
+                .toList();
+        if (searchedItems.isEmpty) {
+          requestStatus = RequestStatus.noData;
+          searchedItems = [];
+          update();
+          await Future.delayed(
+            const Duration(seconds: 2),
+            () => requestStatus = null,
+          );
+        }
+      } else {
+        requestStatus = RequestStatus.noData;
+        searchedItems = [];
+        update();
+        await Future.delayed(
+          const Duration(seconds: 2),
+          () => requestStatus = null,
+        );
+      }
+    } else {
+      requestStatus = RequestStatus.failure;
+      update();
+      await Future.delayed(
+        const Duration(seconds: 2),
+        () => requestStatus = null,
+      );
+    }
+    requestStatus = null;
+    update();
+  }
+
+  @override
+  Future<void> onSearchItems() async {
+    if (searchController.text.isEmpty) {
+      isSearch = false;
+    } else {
+      await _getSearchedItems();
+    }
+  }
+
+  @override
   Future<void> initialData() async {
+    isSearch = false;
     isFavorite = false;
     _itemsData = ItemsData(api: Get.find<Services>().api);
+    searchController = TextEditingController();
+
     selectedId = Get.arguments["selectedCat"];
     categories = Get.arguments["categories"];
     itemsCategoryId = Get.arguments["itemsCategoryId"];

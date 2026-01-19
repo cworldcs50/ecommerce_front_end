@@ -19,9 +19,12 @@ class Items extends StatelessWidget {
           return Column(
             children: [
               CustomAppBar(
+                onFieldSubmitted: (_) async => await controller.onSearchItems(),
+                onChanged: controller.checkSearch,
+                onPressedSearch: controller.onSearchItems,
+                controller: controller.searchController,
                 title: "75".tr,
                 onPressedIcon: () {},
-                onPressedSearch: () {},
               ),
               const SizedBox(height: 15),
               SizedBox(
@@ -35,7 +38,10 @@ class Items extends StatelessWidget {
               Expanded(
                 child: RequestHandlerView(
                   status: controller.requestStatus,
-                  child: CustomItemsGrid(items: controller.items),
+                  child:
+                      controller.isSearch
+                          ? CustomItemsGrid(items: controller.searchedItems)
+                          : CustomItemsGrid(items: controller.items),
                 ),
               ),
             ],
