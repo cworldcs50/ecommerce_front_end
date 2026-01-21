@@ -4,6 +4,7 @@ import '../../core/constants/app_api_links.dart';
 class ItemsModel extends Equatable {
   const ItemsModel({
     required this.itemsId,
+    required this.itemsPriceAfterDiscount,
     required this.itemsName,
     required this.itemsPrice,
     required this.itemsImage,
@@ -25,6 +26,11 @@ class ItemsModel extends Equatable {
   factory ItemsModel.fromJson(Map<String, dynamic> jsonData) => ItemsModel(
     itemsId: jsonData["items_id"],
     itemsName: jsonData["items_name"],
+    itemsPriceAfterDiscount:
+        double.parse(jsonData["items_price"].toString()) -
+        (double.parse(jsonData["items_discount"].toString()) /
+            100 *
+            double.parse(jsonData["items_price"].toString())),
     itemsActive: jsonData["items_active"],
     itemsNameAr: jsonData["items_name_ar"],
     categoriesId: jsonData["categories_id"],
@@ -47,13 +53,17 @@ class ItemsModel extends Equatable {
   final String itemsName, itemsNameAr;
   final String categoriesName, categoriesNameAr;
   final String itemsDescription, itemsDescriptionAr;
-  final double itemsQuantity, itemsPrice, itemsDiscount;
+  final double itemsQuantity,
+      itemsPrice,
+      itemsDiscount,
+      itemsPriceAfterDiscount;
   final String itemsCreationTime, categoriesCreationTime;
   final int itemsId, itemsActive, categoriesId, itemsCategory;
 
   ItemsModel copyWith({
     bool? isFavorite,
     String? itemsImage,
+    double? itemsPriceAfterDiscount,
     String? itemsName,
     String? itemsNameAr,
     String? categoriesName,
@@ -70,6 +80,8 @@ class ItemsModel extends Equatable {
     int? categoriesId,
     int? itemsCategory,
   }) => ItemsModel(
+    itemsPriceAfterDiscount:
+        itemsPriceAfterDiscount ?? this.itemsPriceAfterDiscount,
     itemsId: itemsId ?? this.itemsId,
     itemsName: itemsName ?? this.itemsName,
     itemsPrice: itemsPrice ?? this.itemsPrice,
@@ -93,6 +105,7 @@ class ItemsModel extends Equatable {
   @override
   List<Object?> get props => [
     itemsId,
+    itemsPriceAfterDiscount,
     itemsName,
     itemsImage,
     isFavorite,

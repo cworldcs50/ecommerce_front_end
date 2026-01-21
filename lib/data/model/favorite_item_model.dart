@@ -1,7 +1,6 @@
 import 'package:equatable/equatable.dart';
-
-import '../../core/constants/app_api_links.dart';
 import 'items_model.dart';
+import '../../core/constants/app_api_links.dart';
 
 class FavoriteItemModel extends Equatable {
   const FavoriteItemModel({
@@ -9,6 +8,7 @@ class FavoriteItemModel extends Equatable {
     required this.itemsName,
     required this.itemsNameAr,
     required this.categoriesName,
+    required this.itemsPriceAfterDiscount,
     required this.categoriesNameAr,
     required this.itemsDescription,
     required this.itemsDescriptionAr,
@@ -27,6 +27,11 @@ class FavoriteItemModel extends Equatable {
       FavoriteItemModel(
         itemsId: jsonData["items_id"],
         itemsName: jsonData["items_name"],
+        itemsPriceAfterDiscount:
+            double.parse(jsonData["items_price"].toString()) -
+            (double.parse(jsonData["items_discount"].toString()) /
+                100 *
+                double.parse(jsonData["items_price"].toString())),
         itemsActive: jsonData["items_active"],
         itemsNameAr: jsonData["items_name_ar"],
         categoriesId: jsonData["categories_id"],
@@ -44,6 +49,7 @@ class FavoriteItemModel extends Equatable {
       );
 
   ItemsModel fromFavoriteToItem() => ItemsModel(
+    itemsPriceAfterDiscount: itemsPriceAfterDiscount,
     itemsId: itemsId,
     itemsName: itemsName,
     itemsPrice: itemsPrice,
@@ -67,7 +73,10 @@ class FavoriteItemModel extends Equatable {
   final String itemsName, itemsNameAr;
   final String categoriesName, categoriesNameAr;
   final String itemsDescription, itemsDescriptionAr;
-  final double itemsQuantity, itemsPrice, itemsDiscount;
+  final double itemsQuantity,
+      itemsPrice,
+      itemsDiscount,
+      itemsPriceAfterDiscount;
   final String itemsCreationTime, categoriesCreationTime;
   final int itemsId, itemsActive, categoriesId, itemsCategory;
 
@@ -77,6 +86,7 @@ class FavoriteItemModel extends Equatable {
     itemsName,
     itemsNameAr,
     categoriesName,
+    itemsPriceAfterDiscount,
     categoriesNameAr,
     itemsDescription,
     itemsDescriptionAr,

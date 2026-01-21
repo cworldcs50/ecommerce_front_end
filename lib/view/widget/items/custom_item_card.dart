@@ -24,15 +24,15 @@ class CustomItemCard extends StatelessWidget {
         elevation: 5,
         color: Colors.white,
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15.0),
+          padding: const EdgeInsets.symmetric(horizontal: 3),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Hero(
                 tag: "${itemModel.itemsId}",
                 child: CachedNetworkImage(
-                  width: 240,
-                  height: 160,
+                  // width: 240,
+                  // height: 160,
                   fit: BoxFit.fill,
                   imageUrl: itemModel.itemsImage,
                   errorWidget:
@@ -62,74 +62,96 @@ class CustomItemCard extends StatelessWidget {
                       ),
                 ),
               ),
-              Flexible(
-                child: Text(
-                  translateDataBase(itemModel.itemsName, itemModel.itemsNameAr),
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(fontWeight: FontWeight.bold),
-                ),
+              Text(
+                translateDataBase(itemModel.itemsName, itemModel.itemsNameAr),
+                textAlign: TextAlign.center,
+                style: const TextStyle(fontWeight: FontWeight.bold),
               ),
-              Flexible(
-                child: Text(
-                  translateDataBase(
-                    itemModel.itemsDescription,
-                    itemModel.itemsDescriptionAr,
-                  ),
-                  maxLines: 3,
-                  textAlign: TextAlign.center,
-                  overflow: TextOverflow.ellipsis,
-                  style: const TextStyle(
-                    fontSize: 14,
-                    color: Color.fromRGBO(66, 66, 66, 0.8),
-                  ),
+              Text(
+                translateDataBase(
+                  itemModel.itemsDescription,
+                  itemModel.itemsDescriptionAr,
                 ),
+                maxLines: 2,
+                textAlign: TextAlign.center,
+                overflow: TextOverflow.ellipsis,
+                style: const TextStyle(color: Color.fromRGBO(66, 66, 66, 0.8)),
               ),
-
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text("82".tr),
+                  const Spacer(),
                   ...List.generate(
                     5,
                     (index) => const Icon(
                       Icons.star,
-                      size: 17,
+                      // size: 17,
                       color: Colors.amberAccent,
                     ),
                   ),
                 ],
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    "${itemModel.itemsPrice} \$",
-                    style: const TextStyle(
-                      color: AppColor.primaryColorDark,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20,
+              Flexible(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "${itemModel.itemsPriceAfterDiscount}\$",
+                      textDirection: TextDirection.ltr,
+                      style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: AppColor.primaryColorDark,
+                      ),
                     ),
-                  ),
 
-                  GetBuilder<AddOrRemoveFavoritesControllerImp>(
-                    builder: (controller) {
-                      final String id = "${itemModel.itemsId}";
-                      final String isFav =
-                          controller.isFavorite[id] ??
-                          (itemModel.isFavorite ? "1" : "0");
-
-                      return IconButton(
-                        onPressed:
-                            () async =>
-                                await controller.favoriteHandler(itemModel),
-                        icon: Icon(
-                          isFav == "1" ? Icons.favorite : Icons.favorite_border,
+                    if (itemModel.itemsDiscount > 0)
+                      Text(
+                        "${itemModel.itemsPrice}\$",
+                        textDirection: TextDirection.ltr,
+                        style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                          decoration: TextDecoration.lineThrough,
+                          decorationColor: Colors.redAccent,
+                          decorationThickness: 3.5,
                           color: AppColor.primaryColorDark,
                         ),
-                      );
-                    },
-                  ),
-                ],
+                      ),
+                    if (itemModel.itemsDiscount > 0)
+                      Container(
+                        alignment: Alignment.center,
+                        decoration: const BoxDecoration(
+                          color: Colors.red,
+                          shape: BoxShape.circle,
+                        ),
+                        child: Text(
+                          "${itemModel.itemsDiscount}%",
+                          style: const TextStyle(color: Colors.white),
+                        ),
+                      ),
+
+                    GetBuilder<AddOrRemoveFavoritesControllerImp>(
+                      builder: (controller) {
+                        final String id = "${itemModel.itemsId}";
+                        final String isFav =
+                            controller.isFavorite[id] ??
+                            (itemModel.isFavorite ? "1" : "0");
+                        return IconButton(
+                          padding: EdgeInsets.zero,
+                          onPressed:
+                              () async =>
+                                  await controller.favoriteHandler(itemModel),
+                          icon: Icon(
+                            isFav == "1"
+                                ? Icons.favorite
+                                : Icons.favorite_border,
+                            color: AppColor.primaryColorDark,
+                          ),
+                        );
+                      },
+                    ),
+                  ],
+                ),
               ),
             ],
           ),

@@ -24,16 +24,15 @@ class CustomFavoriteCard extends StatelessWidget {
         elevation: 5,
         color: Colors.white,
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15.0),
+          padding: const EdgeInsets.symmetric(horizontal: 3.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Hero(
                 tag: "${itemModel.itemsId}",
                 child: CachedNetworkImage(
-                  width: 240,
-                  height: 160,
                   fit: BoxFit.fill,
+                  height: 160,
                   imageUrl: itemModel.itemsImage,
                   errorWidget:
                       (context, url, error) => const Icon(
@@ -79,45 +78,73 @@ class CustomFavoriteCard extends StatelessWidget {
                   textAlign: TextAlign.center,
                   overflow: TextOverflow.ellipsis,
                   style: const TextStyle(
-                    fontSize: 14,
                     color: Color.fromRGBO(66, 66, 66, 0.8),
                   ),
                 ),
               ),
-
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text("82".tr),
-                  ...List.generate(
-                    5,
-                    (index) => const Icon(
-                      Icons.star,
-                      size: 17,
-                      color: Colors.amberAccent,
+              Flexible(
+                child: Row(
+                  children: [
+                    Text("82".tr),
+                    const Spacer(),
+                    ...List.generate(
+                      5,
+                      (index) => const Icon(
+                        Icons.star,
+                        // size: 17,
+                        color: Colors.amberAccent,
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    "${itemModel.itemsPrice} \$",
-                    style: const TextStyle(
-                      color: AppColor.primaryColorDark,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20,
+              Flexible(
+                fit: FlexFit.tight,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "${itemModel.itemsPriceAfterDiscount}\$",
+                      style: const TextStyle(
+                        color: AppColor.primaryColorDark,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
-                  ),
-                  IconButton(
-                    onPressed: deleteFavorite,
-                    icon: const Icon(
-                      Icons.delete_outline_outlined,
-                      color: AppColor.primaryColorDark,
+                    if (itemModel.itemsDiscount > 0)
+                      Text(
+                        "${itemModel.itemsPrice}\$",
+                        textDirection: TextDirection.ltr,
+                        style: const TextStyle(
+                          decorationThickness: 3.5,
+                          fontWeight: FontWeight.bold,
+                          color: AppColor.primaryColorDark,
+                          decorationColor: Colors.redAccent,
+                          decoration: TextDecoration.lineThrough,
+                        ),
+                      ),
+                    if (itemModel.itemsDiscount > 0)
+                      Container(
+                        alignment: Alignment.center,
+                        decoration: const BoxDecoration(
+                          color: Colors.red,
+                          shape: BoxShape.circle,
+                        ),
+                        child: Text(
+                          "${itemModel.itemsDiscount}%",
+                          style: const TextStyle(color: Colors.white),
+                        ),
+                      ),
+                    IconButton(
+                      padding: EdgeInsets.zero,
+                      onPressed: deleteFavorite,
+                      style: IconButton.styleFrom(padding: EdgeInsets.zero),
+                      icon: const Icon(
+                        Icons.delete_outline_outlined,
+                        color: AppColor.primaryColorDark,
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ],
           ),
