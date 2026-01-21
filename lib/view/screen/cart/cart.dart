@@ -23,7 +23,7 @@ class Cart extends StatelessWidget {
               children: [
                 CustomCartTitle(onPressed: controller.returnToItemDetails),
                 const SizedBox(height: 10),
-                const CustomCartItemsCountBanner(count: "3"),
+                CustomCartItemsCountBanner(count: "${controller.totalCount}"),
                 const SizedBox(height: 25),
                 ...List.generate(
                   controller.cartItems.length,
@@ -55,47 +55,3 @@ class Cart extends StatelessWidget {
   }
 }
 
-/**
- * const CustomCartListTile(
-            cartModel: CartModel(
-              itemDiscount: "0",
-              itemImage: AppImageAssets.laptop,
-              itemName: "laptop",
-              itemNameAr: "لاب توب",
-              itemPrice: "100",
-            ),
-          ),
-
-          CachedNetworkImage(
-              imageUrl: AppImageAssets.avatar,
-              height: 50,
-              fit: BoxFit.fill,
-              errorWidget:
-                  (context, url, error) => const Icon(
-                    Icons.error,
-                    size: 50,
-                    color: AppColor.primaryColorLight,
-                  ),
-              placeholder:
-                  (context, url) => ShaderMask(
-                    shaderCallback:
-                        (bounds) => LinearGradient(
-                          colors: [
-                            Colors.grey[300]!,
-                            Colors.grey[100]!,
-                            Colors.grey[300]!,
-                          ],
-                          stops: const [0.0, 0.5, 1.0],
-                        ).createShader(bounds),
-                    child: Container(
-                      width: 90,
-                      height: 90,
-                      decoration: BoxDecoration(
-                        color: AppColor.primaryColorDark,
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                    ),
-                  ),
-            ),
-          
- */

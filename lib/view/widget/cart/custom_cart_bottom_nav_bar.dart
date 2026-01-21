@@ -1,7 +1,7 @@
-import 'package:flutter/material.dart';
-
-import '../../../core/constants/app_color.dart';
+import 'package:get/get.dart';
 import 'custom_lang_button.dart';
+import 'package:flutter/material.dart';
+import '../../../core/constants/app_color.dart';
 
 class CustomCartBottomNavBar extends StatelessWidget {
   const CustomCartBottomNavBar({
@@ -23,7 +23,7 @@ class CustomCartBottomNavBar extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Text("price"),
+              Text("103".tr),
               Text(
                 "$price \$",
                 style: const TextStyle(
@@ -37,7 +37,7 @@ class CustomCartBottomNavBar extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Text("shipping"),
+              Text("104".tr),
               Text(
                 "$shipping \$",
                 style: const TextStyle(
@@ -51,9 +51,9 @@ class CustomCartBottomNavBar extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Text(
-                "Total Price",
-                style: TextStyle(
+              Text(
+                "105".tr,
+                style: const TextStyle(
                   fontWeight: FontWeight.bold,
                   color: AppColor.primaryColorDark,
                 ),
@@ -69,7 +69,7 @@ class CustomCartBottomNavBar extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 30),
-          CustomPlaceOrder(btnTitle: "Place Order", onPressed: () {}),
+          CustomPlaceOrder(btnTitle: "106".tr, onPressed: () {}),
         ],
       ),
     );

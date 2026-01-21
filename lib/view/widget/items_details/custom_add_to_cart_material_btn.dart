@@ -1,3 +1,4 @@
+import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import '../../../core/constants/app_color.dart';
 
@@ -13,9 +14,12 @@ class CustomAddToCartMaterialBtn extends StatelessWidget {
       height: 45,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       color: AppColor.primaryColorDark,
-      child: const Text(
-        "Go To Cart",
-        style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+      child: Text(
+        "107".tr,
+        style: const TextStyle(
+          color: Colors.white,
+          fontWeight: FontWeight.bold,
+        ),
       ),
     );
   }

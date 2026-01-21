@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import '../../../core/constants/app_color.dart';
 
 class CustomCartItemsCountBanner extends StatelessWidget {
@@ -16,7 +17,7 @@ class CustomCartItemsCountBanner extends StatelessWidget {
         color: AppColor.primaryColorLight,
       ),
       child: Text(
-        "You Have $count Items in your list",
+        "${"101".tr} $count ${"102".tr}",
         textAlign: TextAlign.center,
         style: const TextStyle(color: AppColor.primaryColorDark),
       ),

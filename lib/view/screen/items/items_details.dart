@@ -66,9 +66,12 @@ class ItemsDetails extends GetView<ItemsDetailsControllerImp> {
                           ),
                         ),
                         const SizedBox(height: 30),
-                        const Text(
-                          "Color",
-                          style: TextStyle(fontSize: 20, color: Colors.black),
+                        Text(
+                          "108".tr,
+                          style: const TextStyle(
+                            fontSize: 20,
+                            color: Colors.black,
+                          ),
                         ),
                         Row(
                           spacing: 15,

@@ -24,7 +24,7 @@ class Settings extends GetView<SettingsControllerImp> {
               mainAxisSize: MainAxisSize.min,
               children: [
                 ListTile(
-                  title: const Text("Disable Notifications"),
+                  title: Text("95".tr),
                   trailing: Switch(
                     value: false,
                     onChanged: (value) {},
@@ -34,22 +34,22 @@ class Settings extends GetView<SettingsControllerImp> {
                 ),
                 ListTile(
                   onTap: () {},
-                  title: const Text("Address"),
+                  title: Text("96".tr),
                   trailing: const Icon(Icons.location_on_outlined),
                 ),
                 ListTile(
                   onTap: () {},
-                  title: const Text("About us"),
+                  title: Text("97".tr),
                   trailing: const Icon(Icons.help_outline_rounded),
                 ),
                 ListTile(
                   onTap: () {},
-                  title: const Text("Contact us"),
+                  title: Text("98".tr),
                   trailing: const Icon(Icons.phone_callback_outlined),
                 ),
                 ListTile(
                   onTap: () async => await controller.logout(),
-                  title: const Text("Logout"),
+                  title: Text("99".tr),
                   trailing: const Icon(Icons.logout_outlined),
                 ),
               ],

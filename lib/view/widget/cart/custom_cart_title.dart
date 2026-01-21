@@ -1,3 +1,4 @@
+import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 
 class CustomCartTitle extends StatelessWidget {
@@ -9,15 +10,12 @@ class CustomCartTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        IconButton(
-          onPressed: onPressed,
-          icon: const Icon(Icons.arrow_back),
-        ),
-        const Expanded(
+        IconButton(onPressed: onPressed, icon: const Icon(Icons.arrow_back)),
+        Expanded(
           child: Text(
-            "My Cart",
+            "100".tr,
             textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+            style: const TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
           ),
         ),
       ],
