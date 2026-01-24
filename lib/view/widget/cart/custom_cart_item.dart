@@ -38,7 +38,7 @@ class CustomCartItem extends StatelessWidget {
                 translateDataBase(cartModel.itemsName, cartModel.itemsNameAr),
               ),
               subtitle: Text(
-                "${cartModel.itemsPrice} \$",
+                "${cartModel.itemsPrice}\$",
                 style: const TextStyle(
                   fontFamily: "sans",
                   color: AppColor.primaryColorDark,
@@ -52,7 +52,7 @@ class CustomCartItem extends StatelessWidget {
                 IconButton(onPressed: addItem, icon: const Icon(Icons.add)),
                 Text(
                   "${cartModel.noItem}",
-                  style: const TextStyle(fontFamily: "sans", fontSize: 18),
+                  style: const TextStyle(fontFamily: "sans"),
                 ),
                 IconButton(
                   onPressed: removeItem,

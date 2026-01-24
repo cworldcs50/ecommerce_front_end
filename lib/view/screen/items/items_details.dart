@@ -43,14 +43,15 @@ class ItemsDetails extends GetView<ItemsDetailsControllerImp> {
                         ),
                         const SizedBox(height: 10),
                         CustomPriceAndQuantityOfItemRow(
+                          itemsModel: controller.item,
                           count: int.parse(controller.itemCount),
-                          price: controller.item.itemsPrice,
+                          price: controller.item.itemsPriceAfterDiscount,
                           add:
-                              () async => controller.addItemToCart(
+                              () async => await controller.addItemToCart(
                                 "${controller.item.itemsId}",
                               ),
                           remove:
-                              () async => controller.removeCartItem(
+                              () async => await controller.removeCartItem(
                                 "${controller.item.itemsId}",
                               ),
                         ),

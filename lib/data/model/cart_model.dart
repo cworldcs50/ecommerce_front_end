@@ -1,19 +1,20 @@
 import 'package:equatable/equatable.dart';
 
 class CartModel extends Equatable {
+  final int cartItemId;
   final int itemsActive;
   final String itemsName;
   final int itemsCategory;
   final int itemsDiscount;
   final int itemsQuantity;
+  final double itemsPrice;
   final String itemsImage;
-  final int itemTotalPrice;
   final String itemsNameAr;
   final String itemsDescription;
   final String itemsCreationTime;
   final String itemsDescriptionAr;
-  final int itemsPrice, cartItemId;
   final int noItem, cartId, userId, itemsId;
+  final double itemTotalPrice, itemTotalPriceAfterDiscount;
 
   const CartModel({
     required this.cartId,
@@ -33,6 +34,7 @@ class CartModel extends Equatable {
     required this.itemsDescription,
     required this.itemsCreationTime,
     required this.itemsDescriptionAr,
+    required this.itemTotalPriceAfterDiscount,
   });
 
   factory CartModel.fromJson(Map<String, dynamic> json) {
@@ -42,7 +44,6 @@ class CartModel extends Equatable {
       userId: json['user_id'],
       itemsId: json['items_id'],
       itemsName: json['items_name'],
-      itemsPrice: json['items_price'],
       itemsImage: json['items_image'],
       cartItemId: json['cart_item_id'],
       itemsActive: json['items_active'],
@@ -50,54 +51,59 @@ class CartModel extends Equatable {
       itemsDiscount: json['items_discount'],
       itemsQuantity: json['items_quantity'],
       itemsCategory: json['items_category'],
-      itemTotalPrice: json['item_total_price'],
       itemsDescription: json['items_description'],
       itemsCreationTime: json['items_creation_time'],
       itemsDescriptionAr: json['items_description_ar'],
+      itemsPrice: (json['items_price'] as num).toDouble(),
+      itemTotalPriceAfterDiscount:
+          (json['item_total_price'] as num).toDouble() -
+          ((json['item_total_price'] as num).toDouble() *
+              (json['items_discount'] as num).toDouble()),
+      itemTotalPrice: (json['item_total_price'] as num).toDouble(),
     );
   }
 
   Map<String, dynamic> toJson() {
     return {
-      'item_total_price': itemTotalPrice,
       'no_item': noItem,
-      'items_id': itemsId,
-      'items_name': itemsName,
-      'items_name_ar': itemsNameAr,
-      'items_description': itemsDescription,
-      'items_description_ar': itemsDescriptionAr,
-      'items_image': itemsImage,
-      'items_active': itemsActive,
-      'items_price': itemsPrice,
-      'items_discount': itemsDiscount,
-      'items_category': itemsCategory,
-      'items_creation_time': itemsCreationTime,
-      'items_quantity': itemsQuantity,
       'cart_id': cartId,
       'user_id': userId,
+      'items_id': itemsId,
+      'items_name': itemsName,
+      'items_price': itemsPrice,
+      'items_image': itemsImage,
       'cart_item_id': cartItemId,
+      'items_active': itemsActive,
+      'items_name_ar': itemsNameAr,
+      'items_discount': itemsDiscount,
+      'items_category': itemsCategory,
+      'items_quantity': itemsQuantity,
+      'item_total_price': itemTotalPrice,
+      'items_description': itemsDescription,
+      'items_creation_time': itemsCreationTime,
+      'items_description_ar': itemsDescriptionAr,
     };
   }
 
   @override
   List<Object?> get props => [
-    itemTotalPrice,
     noItem,
-    itemsId,
-    itemsName,
-    itemsNameAr,
-    itemsDescription,
-    itemsDescriptionAr,
-    itemsImage,
-    itemsActive,
-    itemsPrice,
-    itemsDiscount,
-    itemsCategory,
-    itemsCreationTime,
-    itemsQuantity,
     cartId,
     userId,
+    itemsId,
+    itemsName,
+    itemsImage,
+    itemsPrice,
     cartItemId,
+    itemsNameAr,
+    itemsActive,
+    itemsDiscount,
+    itemsCategory,
+    itemsQuantity,
+    itemTotalPrice,
+    itemsDescription,
+    itemsCreationTime,
+    itemsDescriptionAr,
   ];
 }
 

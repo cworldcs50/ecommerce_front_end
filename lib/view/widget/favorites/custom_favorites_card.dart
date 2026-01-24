@@ -110,30 +110,6 @@ class CustomFavoriteCard extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    if (itemModel.itemsDiscount > 0)
-                      Text(
-                        "${itemModel.itemsPrice}\$",
-                        textDirection: TextDirection.ltr,
-                        style: const TextStyle(
-                          decorationThickness: 3.5,
-                          fontWeight: FontWeight.bold,
-                          color: AppColor.primaryColorDark,
-                          decorationColor: Colors.redAccent,
-                          decoration: TextDecoration.lineThrough,
-                        ),
-                      ),
-                    if (itemModel.itemsDiscount > 0)
-                      Container(
-                        alignment: Alignment.center,
-                        decoration: const BoxDecoration(
-                          color: Colors.red,
-                          shape: BoxShape.circle,
-                        ),
-                        child: Text(
-                          "${itemModel.itemsDiscount}%",
-                          style: const TextStyle(color: Colors.white),
-                        ),
-                      ),
                     IconButton(
                       padding: EdgeInsets.zero,
                       onPressed: deleteFavorite,
