@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import '../../../core/constants/app_color.dart';
+import '../../../core/constants/app_routes_names.dart';
 import '../../widget/settings/custom_settings_title.dart';
 import '../../../controller/settings/settings_controller.dart';
 
@@ -33,7 +34,9 @@ class Settings extends GetView<SettingsControllerImp> {
                   ),
                 ),
                 ListTile(
-                  onTap: () {},
+                  onTap:
+                      () async =>
+                          await Get.toNamed(AppRoutesNames.kAddressView),
                   title: Text("96".tr),
                   trailing: const Icon(Icons.location_on_outlined),
                 ),

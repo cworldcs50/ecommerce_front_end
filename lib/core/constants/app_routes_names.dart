@@ -7,7 +7,10 @@ class AppRoutesNames {
   static const String kSignUp = "/signUp";
   static const String kTestData = "/testData";
   static const String kCart = "/cart";
+  static const String kAddressAdd = "/addressAdd";
+  static const String kAddressEdit = "/addressEdit";
   static const String kLanguage = "/";
+  static const String kAddressView = "/addressView";
   static const String kOnBoarding = "/onBoarding";
   static const String kCheckEmail = "/checkEmail";
   static const String kResetPassword = "/resetPassword";
