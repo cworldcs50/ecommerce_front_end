@@ -1,20 +1,21 @@
 import 'package:get/get.dart';
+import '../view/screen/address/address_add_details.dart';
 import '../view/screen/cart/cart.dart';
 import '../view/screen/home/home.dart';
 import '../view/screen/test/test.dart';
 import 'package:flutter/cupertino.dart';
-import '../view/screen/on_boarding.dart';
+import '../view/screen/onboarding/on_boarding.dart';
 import '../view/screen/items/items.dart';
 import 'middlewares/sign_in_middleware.dart';
 import 'middlewares/language_middleware.dart';
 import '../view/screen/language/language.dart';
+import '../view/screen/address/address_add.dart';
 import '../view/screen/items/items_details.dart';
-// import '../view/screen/address/address_add.dart';
 import '../view/screen/test/test_data_view.dart';
 import '../core/constants/app_routes_names.dart';
 import 'middlewares/on_boarding_middleware.dart';
-// import '../view/screen/address/address_edit.dart';
 import '../view/screen/address/address_view.dart';
+import '../view/screen/address/address_edit.dart';
 import '../view/screen/auth/email/check_email.dart';
 import '../view/screen/auth/authentication/login.dart';
 import '../view/screen/auth/authentication/sign_up.dart';
@@ -77,32 +78,28 @@ final List<GetPage<Widget>> appPages = [
     name: AppRoutesNames.kResetPassword,
     page: () => const ResetPassword(),
   ),
-
   GetPage<SuccessSignUp>(
     name: AppRoutesNames.kSuccessSignUp,
     page: () => const SuccessSignUp(),
   ),
-  GetPage<MapSample>(
+  GetPage<AddressView>(
     name: AppRoutesNames.kAddressView,
-    page: () => const MapSample(),
+    page: () => const AddressView(),
   ),
-
-  // GetPage<AddressView>(
-  //   name: AppRoutesNames.kAddressView,
-  //   page: () => const AddressView(),
-  // ),
-
-  // GetPage<AddressView>(
-  //   name: AppRoutesNames.kAddressAdd,
-  //   page: () => const AddressAdd(),
-  // ),
-
-  // GetPage<AddressView>(
-  //   name: AppRoutesNames.kAddressEdit,
-  //   page: () => const AddressEdit(),
-  // ),
+  GetPage<AddressAdd>(
+    name: AppRoutesNames.kAddressAdd,
+    page: () => const AddressAdd(),
+  ),
+  GetPage<AddressEdit>(
+    name: AppRoutesNames.kAddressEdit,
+    page: () => const AddressEdit(),
+  ),
   GetPage(name: AppRoutesNames.kHome, page: () => const Home()),
+  GetPage(
+    name: AppRoutesNames.kAddressAddDetails,
+    page: () => const AddressAddDetails(),
+  ),
+  GetPage(name: AppRoutesNames.kCart, page: () => const Cart()),
   GetPage(name: AppRoutesNames.kItems, page: () => const Items()),
   GetPage(name: AppRoutesNames.kItemsDetails, page: () => const ItemsDetails()),
-  GetPage(name: AppRoutesNames.kCart, page: () => const Cart()),
 ];

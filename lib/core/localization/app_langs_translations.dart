@@ -117,6 +117,13 @@ class AppLangsTranslations extends Translations {
       "106": "Place Order",
       "107": "Go To Cart",
       "108": "Colors",
+      "109": "add new address",
+      "110": "Location services are disabled",
+      "111": "Location permissions are denied",
+      "112":
+          'Location permissions are permanently denied, we cannot request permissions.',
+      "113": "complete",
+      "114": "add address details",
     },
     "ar": {
       "1": "اختر اللغة",
@@ -229,6 +236,12 @@ class AppLangsTranslations extends Translations {
       "106": "طلب اوردر",
       "107": "انتقل إلى سلة التسوق",
       "108": "الالوان",
+      "109": "اضف عنوان جديد",
+      "110": "تم تعطيل خدمات الموقع",
+      "111": "تم رفض أذونات الموقع",
+      "112": "تم رفض أذونات الموقع بشكل دائم، ولا يمكننا طلب الأذونات.",
+      "113": "اكمال",
+      "114": "اضف تفاصيل العنوان",
     },
   };
 }

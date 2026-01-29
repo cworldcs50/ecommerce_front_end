@@ -8,6 +8,7 @@ class AppRoutesNames {
   static const String kTestData = "/testData";
   static const String kCart = "/cart";
   static const String kAddressAdd = "/addressAdd";
+  static const String kAddressAddDetails = "/addressAddPartTwo";
   static const String kAddressEdit = "/addressEdit";
   static const String kLanguage = "/";
   static const String kAddressView = "/addressView";

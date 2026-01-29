@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import '../../core/constants/app_color.dart';
-import '../widget/on_boarding/custom_button.dart';
-import '../widget/on_boarding/custom_slider.dart';
-import '../widget/on_boarding/custom_page_view_builder.dart';
+import '../../../core/constants/app_color.dart';
+import '../../widget/on_boarding/custom_button.dart';
+import '../../widget/on_boarding/custom_slider.dart';
+import '../../widget/on_boarding/custom_page_view_builder.dart';
 
 class OnBoarding extends StatelessWidget {
   const OnBoarding({super.key});

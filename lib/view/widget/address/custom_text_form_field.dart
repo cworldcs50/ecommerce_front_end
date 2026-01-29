@@ -9,7 +9,6 @@ class CustomTextFormField extends StatelessWidget {
     required this.controller,
     required this.keyboardType,
     this.obsecureText = false,
-    this.onPressed,
     super.key,
   });
 
@@ -18,7 +17,6 @@ class CustomTextFormField extends StatelessWidget {
   final String labelText;
   final bool obsecureText;
   final TextInputType keyboardType;
-  final void Function()? onPressed;
   final TextEditingController controller;
   final String? Function(String?) validator;
 
@@ -28,8 +26,8 @@ class CustomTextFormField extends StatelessWidget {
       keyboardType: keyboardType,
       obscureText: obsecureText,
       autovalidateMode: AutovalidateMode.onUserInteraction,
-      validator: validator,
       controller: controller,
+      validator: validator,
       decoration: InputDecoration(
         contentPadding: const EdgeInsets.symmetric(vertical: 5, horizontal: 30),
         hintText: hintText,
@@ -40,7 +38,7 @@ class CustomTextFormField extends StatelessWidget {
         ),
         floatingLabelBehavior: FloatingLabelBehavior.always,
         floatingLabelAlignment: FloatingLabelAlignment.start,
-        suffixIcon: IconButton(onPressed: onPressed, icon: Icon(icon)),
+        suffixIcon: Icon(icon),
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
       ),
     );

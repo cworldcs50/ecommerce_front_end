@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import '../../data/datasource/remote/search/search.dart';
-import '../../view/screen/profile.dart';
+import '../../view/screen/profile/profile.dart';
 import '../../data/model/items_model.dart';
 import '../../core/services/services.dart';
 import '../../view/screen/home/home_body.dart';

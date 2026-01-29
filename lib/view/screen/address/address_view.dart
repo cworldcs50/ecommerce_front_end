@@ -1,50 +1,52 @@
-import 'dart:async';
+import 'package:get/get.dart';
 import 'package:flutter/material.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
+import '../../../core/constants/app_color.dart';
+import '../../../core/class/request_handler_view.dart';
+import '../../../core/constants/app_routes_names.dart';
+import '../../widget/address/custom_address_card.dart';
+import '../../../controller/address/address_view_controller.dart';
 
-class MapSample extends StatefulWidget {
-  const MapSample({super.key});
-
-  @override
-  State<MapSample> createState() => MapSampleState();
-}
-
-class MapSampleState extends State<MapSample> {
-  final Completer<GoogleMapController> _controller =
-      Completer<GoogleMapController>();
-
-  static const CameraPosition _kGooglePlex = CameraPosition(
-    target: LatLng(37.42796133580664, -122.085749655962),
-    zoom: 14.4746,
-  );
-
-  static const CameraPosition _kLake = CameraPosition(
-    bearing: 192.8334901395799,
-    target: LatLng(37.43296265331129, -122.08832357078792),
-    tilt: 59.440717697143555,
-    zoom: 19.151926040649414,
-  );
+class AddressView extends StatelessWidget {
+  const AddressView({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: GoogleMap(
-        mapType: MapType.hybrid,
-        initialCameraPosition: _kGooglePlex,
-        onMapCreated: (GoogleMapController controller) {
-          _controller.complete(controller);
-        },
+      backgroundColor: AppColor.backgroundColor,
+      appBar: AppBar(
+        centerTitle: true,
+        foregroundColor: Colors.white,
+        backgroundColor: AppColor.primaryColorDark,
+        title: Text("96".tr, style: const TextStyle(color: Colors.white)),
       ),
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: _goToTheLake,
-        label: const Text('To the lake!'),
-        icon: const Icon(Icons.directions_boat),
+      floatingActionButton: FloatingActionButton(
+        shape: const CircleBorder(),
+        backgroundColor: AppColor.primaryColorDark,
+        onPressed: () async => await Get.toNamed(AppRoutesNames.kAddressAdd),
+        child: const Icon(Icons.add, color: Colors.white),
+      ),
+      body: GetBuilder<AddressViewController>(
+        builder:
+            (controller) => RequestHandlerView(
+              status: controller.requestStatus,
+              child: Padding(
+                padding: const EdgeInsets.only(top: 20.0),
+                child: ListView.separated(
+                  itemCount: controller.addresses.length,
+                  separatorBuilder:
+                      (context, index) => const SizedBox(height: 30),
+                  itemBuilder:
+                      (context, index) => CustomAddressCard(
+                        delete:
+                            () async => await controller.deleteAddress(
+                              controller.addresses[index].addressId,
+                            ),
+                        addressModel: controller.addresses[index],
+                      ),
+                ),
+              ),
+            ),
       ),
     );
-  }
-
-  Future<void> _goToTheLake() async {
-    final GoogleMapController controller = await _controller.future;
-    await controller.animateCamera(CameraUpdate.newCameraPosition(_kLake));
   }
 }
