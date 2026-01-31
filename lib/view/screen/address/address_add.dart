@@ -17,7 +17,6 @@ class AddressAdd extends StatelessWidget {
         foregroundColor: Colors.white,
         backgroundColor: AppColor.primaryColorDark,
       ),
-
       body: GetBuilder<AddressAddController>(
         builder:
             (controller) => RequestHandlerView(

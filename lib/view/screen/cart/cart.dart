@@ -2,7 +2,6 @@ import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import '../../../core/constants/app_color.dart';
 import '../../widget/cart/custom_cart_item.dart';
-import '../../widget/cart/custom_cart_title.dart';
 import '../../../controller/cart/cart_controller.dart';
 import '../../../core/class/request_handler_view.dart';
 import '../../widget/cart/custom_cart_bottom_nav_bar.dart';
@@ -17,11 +16,22 @@ class Cart extends StatelessWidget {
       builder: (controller) {
         return Scaffold(
           backgroundColor: AppColor.backgroundColor,
+          appBar: AppBar(
+            centerTitle: true,
+            title: Text(
+              "100".tr,
+              textAlign: TextAlign.center,
+              style: const TextStyle(
+                fontSize: 25,
+                fontWeight: FontWeight.bold,
+                color: AppColor.primaryColorDark,
+              ),
+            ),
+          ),
           body: RequestHandlerView(
             status: controller.requestStatus,
             child: ListView(
               children: [
-                CustomCartTitle(onPressed: controller.returnToItemDetails),
                 const SizedBox(height: 10),
                 CustomCartItemsCountBanner(count: "${controller.totalCount}"),
                 const SizedBox(height: 25),
@@ -43,15 +53,22 @@ class Cart extends StatelessWidget {
               ],
             ),
           ),
-
-          bottomNavigationBar: CustomCartBottomNavBar(
-            price: "${controller.totalPrice}",
-            shipping: "1200",
-            totalPrice: "1200",
+          bottomNavigationBar: RequestHandlerView(
+            status: controller.requestStatus,
+            child: CustomCartBottomNavBar(
+              shipping: "100",
+              couponName: controller.couponName,
+              showCouponName: controller.showCouponName,
+              onPressed: controller.applyCoupon,
+              totalPrice: "${controller.totalPrice}",
+              couponController: controller.couponController,
+              discount: "${controller.couponDiscount * 100}",
+              price:
+                  "${controller.totalPrice - controller.totalPrice * controller.couponDiscount}",
+            ),
           ),
         );
       },
     );
   }
 }
-

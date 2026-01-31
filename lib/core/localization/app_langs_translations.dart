@@ -124,6 +124,9 @@ class AppLangsTranslations extends Translations {
           'Location permissions are permanently denied, we cannot request permissions.',
       "113": "complete",
       "114": "add address details",
+      "115": "discount",
+      "116" : "enter coupon code",
+      "117" : "apply"
     },
     "ar": {
       "1": "اختر اللغة",
@@ -242,6 +245,9 @@ class AppLangsTranslations extends Translations {
       "112": "تم رفض أذونات الموقع بشكل دائم، ولا يمكننا طلب الأذونات.",
       "113": "اكمال",
       "114": "اضف تفاصيل العنوان",
+      "115": "خصم",
+      "116":"أدخل رمز القسيمة",
+      "117" : "تطبيق"
     },
   };
 }

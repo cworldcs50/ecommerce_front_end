@@ -4,6 +4,15 @@ import 'package:flutter/material.dart';
 class AppTheme {
   static final arabicTheme = ThemeData(
     fontFamily: "Cairo",
+    // appBarTheme: const AppBarTheme(
+    //   centerTitle: true,
+    //   iconTheme: IconThemeData(color: AppColor.primaryColorDark),
+    //   titleTextStyle: TextStyle(
+    //     fontSize: 25,
+    //     fontWeight: FontWeight.bold,
+    //     color: AppColor.primaryColorDark,
+    //   ),
+    // ),
     textTheme: const TextTheme(
       headlineSmall: TextStyle(
         fontSize: 20,
@@ -34,6 +43,15 @@ class AppTheme {
 
   static final englishTheme = ThemeData(
     fontFamily: "PlayfairDisplay",
+    // appBarTheme: const AppBarTheme(
+    //   centerTitle: true,
+    //   iconTheme: IconThemeData(color: AppColor.primaryColorDark),
+    //   titleTextStyle: TextStyle(
+    //     fontSize: 25,
+    //     fontWeight: FontWeight.bold,
+    //     color: AppColor.primaryColorDark,
+    //   ),
+    // ),
     textTheme: const TextTheme(
       headlineSmall: TextStyle(
         fontSize: 20,

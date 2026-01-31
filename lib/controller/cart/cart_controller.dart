@@ -1,10 +1,13 @@
 import 'package:get/get.dart';
+import 'package:flutter/material.dart';
 import '../../data/model/cart_model.dart';
 import '../../core/services/services.dart';
+import '../../data/model/coupon_model.dart';
+import '../items/items_details_controller.dart';
 import '../../core/functions/handling_data.dart';
 import '../../core/constants/enums/request_status.dart';
 import '../../data/datasource/remote/cart/cart_data.dart';
-import '../items/items_details_controller.dart';
+import '../../data/datasource/remote/coupon/coupon_data.dart';
 
 abstract class CartController extends GetxController {
   Future<void> initialData();
@@ -19,9 +22,15 @@ class CartControllerImp extends CartController {
   late int totalCount;
   late int totalPrice;
   late final int _userId;
+  late Services services;
+  late String couponName;
+  late bool showCouponName;
+  late double couponDiscount;
+  late CouponData _couponData;
   RequestStatus? requestStatus;
   late final CartData _cartData;
   late List<CartModel> cartItems;
+  late TextEditingController couponController;
   late final ItemsDetailsControllerImp _itemsDetailsControllerImp;
 
   @override
@@ -35,10 +44,58 @@ class CartControllerImp extends CartController {
     cartItems = [];
     totalCount = 0;
     totalPrice = 0;
+    couponName = "";
+    couponDiscount = 0.0;
+    showCouponName = true;
     _itemsDetailsControllerImp = Get.find<ItemsDetailsControllerImp>();
+    couponController = TextEditingController();
     _userId = Get.find<Services>().prefs.getInt("user_id")!;
-    _cartData = CartData(api: Get.find<Services>().api);
+    services = Get.find<Services>();
+    _cartData = CartData(api: services.api);
+    _couponData = CouponData(api: services.api);
     await viewCartItems();
+  }
+
+  Future<void> applyCoupon() async {
+    if (couponController.text.isNotEmpty) {
+      requestStatus = RequestStatus.loading;
+
+      update();
+
+      final request = await _couponData.getCoupon(couponController.text);
+
+      final result = handlingData(request);
+
+      update();
+
+      if (result == RequestStatus.success) {
+        if (request["status"] == "success") {
+          final CouponModel couponModel = CouponModel.fromJson(request["data"]);
+          couponName = couponModel.couponName;
+          couponDiscount = couponModel.couponDiscount;
+          requestStatus = RequestStatus.success;
+          showCouponName = false;
+        } else {
+          Get.showSnackbar(
+            const GetSnackBar(
+              title: "Oops!",
+              message: "coupon expired or not found!",
+            ),
+          );
+          requestStatus = RequestStatus.noData;
+        }
+      } else {
+        Get.showSnackbar(
+          const GetSnackBar(title: "Error!", message: "Please try again later"),
+        );
+        requestStatus = RequestStatus.serverFailure;
+      }
+    }
+    await Future.delayed(const Duration(seconds: 2), () {
+      requestStatus = null;
+      couponController.clear();
+      update();
+    });
   }
 
   @override
@@ -103,7 +160,7 @@ class CartControllerImp extends CartController {
         totalPrice = request["CountAndPriceData"]["total_price"];
         totalCount = request["CountAndPriceData"]["total_count"];
       } else {
-        resetValues();
+        _resetValues();
       }
     } else {
       requestStatus = RequestStatus.failure;
@@ -117,7 +174,7 @@ class CartControllerImp extends CartController {
     update();
   }
 
-  void resetValues() {
+  void _resetValues() {
     cartItems = [];
     totalCount = 0;
     totalPrice = 0;
@@ -127,5 +184,11 @@ class CartControllerImp extends CartController {
   Future<void> returnToItemDetails() async {
     await _itemsDetailsControllerImp.getItemsCount();
     Get.back();
+  }
+
+  @override
+  void onClose() {
+    super.onClose();
+    couponController.dispose();
   }
 }

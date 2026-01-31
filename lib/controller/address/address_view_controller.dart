@@ -74,11 +74,6 @@ class AddressViewController extends GetxController {
     }
 
     update();
-
-    // await Future.delayed(const Duration(seconds: 2), () {
-    //   requestStatus = null;
-    //   update();
-    // });
   }
 
   void initVars() {
