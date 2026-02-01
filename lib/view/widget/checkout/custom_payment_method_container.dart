@@ -17,18 +17,24 @@ class CustomPaymentMethodContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: onTap,
-      child: Container(
-        alignment: Alignment.centerLeft,
-        margin: const EdgeInsets.only(left: 10),
-        padding: const EdgeInsets.only(left: 20),
-        decoration: BoxDecoration(
-          color:
-              isChoosed
-                  ? AppColor.primaryColorDark
-                  : AppColor.primaryColorLight,
-          borderRadius: BorderRadius.circular(10),
+      child: Card(
+        elevation: 5,
+        color:
+            isChoosed ? AppColor.primaryColorDark : AppColor.primaryColorLight,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+        child: Container(
+          alignment: Alignment.centerLeft,
+          margin: const EdgeInsets.only(left: 10),
+          padding: const EdgeInsets.only(left: 20),
+          decoration: BoxDecoration(
+            color:
+                isChoosed
+                    ? AppColor.primaryColorDark
+                    : AppColor.primaryColorLight,
+            borderRadius: BorderRadius.circular(10),
+          ),
+          child: Text(title, style: const TextStyle(color: Colors.white)),
         ),
-        child: Text(title, style: const TextStyle(color: Colors.white)),
       ),
     );
   }

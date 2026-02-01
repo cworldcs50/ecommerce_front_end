@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../../../core/constants/app_color.dart';
-import '../../../core/constants/app_image_assets.dart';
 
 class CustomDeliveryTypeContainer extends StatelessWidget {
   const CustomDeliveryTypeContainer({
@@ -30,14 +29,20 @@ class CustomDeliveryTypeContainer extends StatelessWidget {
             borderRadius: BorderRadius.circular(10),
           ),
           child: Column(
-            spacing: 10,
             mainAxisSize: MainAxisSize.min,
             children: [
+              const SizedBox(height: 10),
               Image.asset(
-                AppImageAssets.delivery,
-                color: isChoosed ? Colors.white : AppColor.primaryColorDark,
+                deliveryTypeImage,
                 width: 90,
+                color: isChoosed ? Colors.white : null,
+                errorBuilder:
+                    (context, error, stackTrace) => const Icon(
+                      Icons.error,
+                      color: AppColor.primaryColorDark,
+                    ),
               ),
+              const SizedBox(height: 10),
               Text(
                 deliveryTypeName,
                 style: TextStyle(
@@ -52,4 +57,3 @@ class CustomDeliveryTypeContainer extends StatelessWidget {
     );
   }
 }
-

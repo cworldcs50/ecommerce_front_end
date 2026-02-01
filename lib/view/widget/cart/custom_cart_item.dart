@@ -29,6 +29,9 @@ class CustomCartItem extends StatelessWidget {
             child: Image.network(
               "${AppApiLinks.kItemsImages}/${cartModel.itemsImage}",
               fit: BoxFit.cover,
+              errorBuilder:
+                  (context, error, stackTrace) =>
+                      const Icon(Icons.error, color: AppColor.primaryColorDark),
             ),
           ),
           Expanded(
