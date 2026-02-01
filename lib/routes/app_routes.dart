@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import '../view/screen/address/address_add_details.dart';
 import '../view/screen/cart/cart.dart';
+import '../view/screen/checkout/checkout.dart';
 import '../view/screen/home/home.dart';
 import '../view/screen/test/test.dart';
 import 'package:flutter/cupertino.dart';
@@ -102,4 +103,5 @@ final List<GetPage<Widget>> appPages = [
   GetPage(name: AppRoutesNames.kCart, page: () => const Cart()),
   GetPage(name: AppRoutesNames.kItems, page: () => const Items()),
   GetPage(name: AppRoutesNames.kItemsDetails, page: () => const ItemsDetails()),
+  GetPage(name: AppRoutesNames.kCheckout, page: () =>  const Checkout()),
 ];

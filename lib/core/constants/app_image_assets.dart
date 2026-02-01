@@ -14,4 +14,6 @@ class AppImageAssets {
   static const String laptop = "$rootImages/laptop.jpg";
   static const String avatar = "$rootImages/avatar.png";
   static const String offer = "$rootImages/offer.png";
+  static const String delivery = "$rootImages/delivery.png";
+  static const String driveThru = "$rootImages/driveThru.png";
 }

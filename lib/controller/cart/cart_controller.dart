@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import '../../core/constants/app_routes_names.dart';
 import '../../data/model/cart_model.dart';
 import '../../core/services/services.dart';
 import '../../data/model/coupon_model.dart';
@@ -12,6 +13,7 @@ import '../../data/datasource/remote/coupon/coupon_data.dart';
 abstract class CartController extends GetxController {
   Future<void> initialData();
   Future<void> getCartItems();
+  Future<void> goToCheckout();
   Future<void> viewCartItems();
   Future<void> returnToItemDetails();
   Future<void> addItemToCart(String itemId);
@@ -55,6 +57,10 @@ class CartControllerImp extends CartController {
     _couponData = CouponData(api: services.api);
     await viewCartItems();
   }
+
+  @override
+  Future<void> goToCheckout() async =>
+      await Get.toNamed(AppRoutesNames.kCheckout);
 
   Future<void> applyCoupon() async {
     if (couponController.text.isNotEmpty) {

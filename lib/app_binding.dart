@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'controller/address/address_add_details_controller.dart';
 import 'controller/address/address_view_controller.dart';
 import 'controller/cart/cart_controller.dart';
+import 'controller/checkout/checkout_controller.dart';
 import 'controller/home/home_controller.dart';
 import 'controller/test_data_controller.dart';
 import 'controller/items/items_controller.dart';
@@ -97,21 +98,16 @@ class AppBinding extends Bindings {
       tag: "login",
       fenix: true,
     );
-
     Get.lazyPut(() => HomeControllerImp(), fenix: true);
-
     Get.lazyPut(() => ItemsControllerImp(), fenix: true);
-
     Get.lazyPut(() => ItemsDetailsControllerImp(), fenix: true);
-
     Get.lazyPut(() => AddOrRemoveFavoritesControllerImp(), fenix: true);
-
     Get.lazyPut(() => FavoritesViewControllerImp(), fenix: true);
-
     Get.lazyPut(() => SettingsControllerImp(), fenix: true);
     Get.lazyPut(() => CartControllerImp(), fenix: true);
     Get.lazyPut(() => AddressAddController(), fenix: true);
     Get.lazyPut(() => AddressAddDetailsController(), fenix: true);
     Get.lazyPut(() => AddressViewController(), fenix: true);
+    Get.lazyPut(() => CheckoutController(), fenix: true);
   }
 }

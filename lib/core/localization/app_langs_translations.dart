@@ -125,8 +125,9 @@ class AppLangsTranslations extends Translations {
       "113": "complete",
       "114": "add address details",
       "115": "discount",
-      "116" : "enter coupon code",
-      "117" : "apply"
+      "116": "enter coupon code",
+      "117": "apply",
+      "118": "Checkout",
     },
     "ar": {
       "1": "اختر اللغة",
@@ -246,8 +247,9 @@ class AppLangsTranslations extends Translations {
       "113": "اكمال",
       "114": "اضف تفاصيل العنوان",
       "115": "خصم",
-      "116":"أدخل رمز القسيمة",
-      "117" : "تطبيق"
+      "116": "أدخل رمز القسيمة",
+      "117": "تطبيق",
+      "118": "الدفع",
     },
   };
 }

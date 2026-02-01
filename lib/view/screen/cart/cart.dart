@@ -58,9 +58,10 @@ class Cart extends StatelessWidget {
             child: CustomCartBottomNavBar(
               shipping: "100",
               couponName: controller.couponName,
-              showCouponName: controller.showCouponName,
               onPressed: controller.applyCoupon,
+              goToCheckout: controller.goToCheckout,
               totalPrice: "${controller.totalPrice}",
+              showCouponName: controller.showCouponName,
               couponController: controller.couponController,
               discount: "${controller.couponDiscount * 100}",
               price:

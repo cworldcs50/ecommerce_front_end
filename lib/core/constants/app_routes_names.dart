@@ -5,6 +5,7 @@ class AppRoutesNames {
   static const String kLogin = '/login';
   static const String kItemsDetails = "/itemsDetails";
   static const String kSignUp = "/signUp";
+  static const String kCheckout = "/checkout";
   static const String kTestData = "/testData";
   static const String kCart = "/cart";
   static const String kAddressAdd = "/addressAdd";

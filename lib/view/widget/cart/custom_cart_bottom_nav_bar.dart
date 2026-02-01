@@ -14,12 +14,14 @@ class CustomCartBottomNavBar extends StatelessWidget {
     required this.onPressed,
     required this.couponName,
     required this.totalPrice,
+    required this.goToCheckout,
     required this.showCouponName,
     required this.couponController,
   });
 
   final bool showCouponName;
   final void Function() onPressed;
+  final void Function() goToCheckout;
   final TextEditingController couponController;
   final String price, discount, totalPrice, shipping, couponName;
 
@@ -126,7 +128,7 @@ class CustomCartBottomNavBar extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 10),
-          CustomPlaceOrder(btnTitle: "106".tr, onPressed: () {}),
+          CustomPlaceOrder(btnTitle: "106".tr, onPressed: goToCheckout),
         ],
       ),
     );
