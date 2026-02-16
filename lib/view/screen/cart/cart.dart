@@ -57,6 +57,7 @@ class Cart extends StatelessWidget {
             status: controller.requestStatus,
             child: CustomCartBottomNavBar(
               shipping: "100",
+              activateApplyCouponBtn: controller.cartItems.isNotEmpty,
               activatePlaceOrderBtn: controller.cartItems.isNotEmpty,
               couponName: controller.couponName,
               onPressed: controller.applyCoupon,

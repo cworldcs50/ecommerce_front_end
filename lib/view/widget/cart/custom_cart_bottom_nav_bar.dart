@@ -17,6 +17,7 @@ class CustomCartBottomNavBar extends StatelessWidget {
     required this.goToCheckout,
     required this.showCouponName,
     required this.couponController,
+    required this.activateApplyCouponBtn,
     required this.activatePlaceOrderBtn,
   });
 
@@ -24,6 +25,7 @@ class CustomCartBottomNavBar extends StatelessWidget {
   final void Function() onPressed;
   final void Function() goToCheckout;
   final TextEditingController couponController;
+  final bool activateApplyCouponBtn;
   final String price, discount, totalPrice, shipping, couponName;
 
   @override
@@ -52,7 +54,10 @@ class CustomCartBottomNavBar extends StatelessWidget {
                 ),
                 Expanded(
                   flex: 1,
-                  child: CustomApplyCouponBtn(onPressed: onPressed),
+                  child: CustomApplyCouponBtn(
+                    onPressed: onPressed,
+                    isActive: activateApplyCouponBtn,
+                  ),
                 ),
               ],
             ),

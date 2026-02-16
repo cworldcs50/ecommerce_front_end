@@ -41,7 +41,7 @@ class CustomCartItem extends StatelessWidget {
                 translateDataBase(cartModel.itemsName, cartModel.itemsNameAr),
               ),
               subtitle: Text(
-                "${cartModel.itemsPrice}\$",
+                "${cartModel.itemsPrice * cartModel.noItem}\$",
                 style: const TextStyle(
                   fontFamily: "sans",
                   color: AppColor.primaryColorDark,

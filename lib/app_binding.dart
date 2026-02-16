@@ -3,6 +3,7 @@ import 'controller/address/address_add_details_controller.dart';
 import 'controller/address/address_view_controller.dart';
 import 'controller/cart/cart_controller.dart';
 import 'controller/checkout/checkout_controller.dart';
+import 'controller/checkout/orders_archieve_controller.dart';
 import 'controller/home/home_controller.dart';
 import 'controller/test_data_controller.dart';
 import 'controller/items/items_controller.dart';
@@ -109,5 +110,6 @@ class AppBinding extends Bindings {
     Get.lazyPut(() => AddressAddDetailsController(), fenix: true);
     Get.lazyPut(() => AddressViewController(), fenix: true);
     Get.lazyPut(() => CheckoutController(), fenix: true);
+    Get.lazyPut(() => OrdersArchieveController(), fenix: true);
   }
 }

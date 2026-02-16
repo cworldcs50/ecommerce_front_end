@@ -22,12 +22,13 @@ abstract class CartController extends GetxController {
 
 class CartControllerImp extends CartController {
   late int totalCount;
-  late int totalPrice;
+  late double totalPrice;
   late final int _userId;
   late Services services;
   late String couponName;
   late bool showCouponName;
   late double couponDiscount;
+  late String couponId;
   late CouponData _couponData;
   RequestStatus? requestStatus;
   late final CartData _cartData;
@@ -45,22 +46,29 @@ class CartControllerImp extends CartController {
   Future<void> initialData() async {
     cartItems = [];
     totalCount = 0;
-    totalPrice = 0;
+    couponId = "0";
     couponName = "";
+    totalPrice = 0.0;
     couponDiscount = 0.0;
     showCouponName = true;
-    _itemsDetailsControllerImp = Get.find<ItemsDetailsControllerImp>();
-    couponController = TextEditingController();
-    _userId = Get.find<Services>().prefs.getInt("user_id")!;
     services = Get.find<Services>();
     _cartData = CartData(api: services.api);
+    couponController = TextEditingController();
     _couponData = CouponData(api: services.api);
+    _userId = Get.find<Services>().prefs.getInt("user_id")!;
+    _itemsDetailsControllerImp = Get.find<ItemsDetailsControllerImp>();
     await viewCartItems();
   }
 
   @override
-  Future<void> goToCheckout() async =>
-      await Get.toNamed(AppRoutesNames.kCheckout);
+  Future<void> goToCheckout() async => await Get.toNamed(
+    AppRoutesNames.kCheckout,
+    arguments: {
+      "isOrderApplyCoupon": couponId,
+      "ordersTotalPrice": totalPrice,
+      "couponDiscount": couponDiscount,
+    },
+  );
 
   Future<void> applyCoupon() async {
     if (couponController.text.isNotEmpty) {
@@ -79,6 +87,7 @@ class CartControllerImp extends CartController {
           final CouponModel couponModel = CouponModel.fromJson(request["data"]);
           couponName = couponModel.couponName;
           couponDiscount = couponModel.couponDiscount;
+          couponId = couponModel.couponId.toString();
           requestStatus = RequestStatus.success;
           showCouponName = false;
         } else {
@@ -125,6 +134,7 @@ class CartControllerImp extends CartController {
     }
 
     await viewCartItems();
+    await _itemsDetailsControllerImp.getItemsCount();
   }
 
   @override
@@ -145,6 +155,7 @@ class CartControllerImp extends CartController {
     }
 
     await viewCartItems();
+    await _itemsDetailsControllerImp.getItemsCount();
   }
 
   @override
@@ -163,7 +174,8 @@ class CartControllerImp extends CartController {
                 .map((cartItem) => CartModel.fromJson(cartItem))
                 .toList();
 
-        totalPrice = request["CountAndPriceData"]["total_price"];
+        totalPrice =
+            (request["CountAndPriceData"]["total_price"] as num).toDouble();
         totalCount = request["CountAndPriceData"]["total_count"];
       } else {
         _resetValues();

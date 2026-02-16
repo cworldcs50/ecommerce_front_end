@@ -41,6 +41,13 @@ class Settings extends GetView<SettingsControllerImp> {
                   trailing: const Icon(Icons.location_on_outlined),
                 ),
                 ListTile(
+                  onTap:
+                      () async =>
+                          await Get.toNamed(AppRoutesNames.kOrdersArchieve),
+                  title: const Text("orders archieve"),
+                  trailing: const Icon(Icons.shopping_cart_outlined),
+                ),
+                ListTile(
                   onTap: () {},
                   title: Text("97".tr),
                   trailing: const Icon(Icons.help_outline_rounded),

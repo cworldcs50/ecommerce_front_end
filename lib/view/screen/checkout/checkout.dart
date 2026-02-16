@@ -1,7 +1,6 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import '../../../core/constants/app_color.dart';
-import '../../../data/model/address_model.dart';
 import '../../../core/class/request_handler_view.dart';
 import '../../widget/checkout/custom_checkout_container.dart';
 import '../../../controller/checkout/checkout_controller.dart';
@@ -9,6 +8,7 @@ import '../../widget/checkout/custom_checkout_body_headlines.dart';
 import '../../widget/checkout/custom_choose_delivery_type_row.dart';
 import '../../widget/checkout/custom_payment_method_container.dart';
 import '../../widget/checkout/custom_checkout_shipping_address_card.dart';
+import '../../widget/checkout/custom_checkout_shipping_address_cards_list_view.dart';
 
 class Checkout extends StatelessWidget {
   const Checkout({super.key});
@@ -18,17 +18,27 @@ class Checkout extends StatelessWidget {
     return GetBuilder<CheckoutController>(
       builder: (controller) {
         return Scaffold(
-          bottomNavigationBar: AbsorbPointer(
-            absorbing: !controller.canCheckout(),
-            child: CustomCheckoutContainer(
-              title: "Checkout",
-              onPressed: controller.checkout,
-              canCheckOut: controller.canCheckout(),
+          bottomNavigationBar: RequestHandlerView(
+            status: controller.requestStatus,
+            child: AbsorbPointer(
+              absorbing: !controller.canCheckout(),
+              child: CustomCheckoutContainer(
+                title: "Checkout",
+                onPressed: controller.checkout,
+                canCheckOut: controller.canCheckout(),
+              ),
             ),
           ),
           appBar: AppBar(
             centerTitle: true,
             iconTheme: const IconThemeData(color: AppColor.primaryColorDark),
+            leading: IconButton(
+              onPressed: controller.returnToHomeView,
+              icon: const Icon(
+                Icons.arrow_back,
+                color: AppColor.primaryColorDark,
+              ),
+            ),
             title: const Text(
               "Checkout",
               style: TextStyle(
@@ -102,27 +112,6 @@ class Checkout extends StatelessWidget {
           ),
         );
       },
-    );
-  }
-}
-
-class CustomCheckoutShippingAddressCardsListView extends StatelessWidget {
-  const CustomCheckoutShippingAddressCardsListView({
-    super.key,
-    required this.addresses,
-    required this.itemBuilder,
-  });
-
-  final List<AddressModel> addresses;
-  final Widget? Function(BuildContext, int) itemBuilder;
-
-  @override
-  Widget build(BuildContext context) {
-    return ListView.separated(
-      itemCount: addresses.length,
-      physics: const BouncingScrollPhysics(),
-      separatorBuilder: (context, index) => const SizedBox(height: 10),
-      itemBuilder: itemBuilder,
     );
   }
 }
