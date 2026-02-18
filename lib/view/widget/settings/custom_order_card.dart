@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jiffy/jiffy.dart';
 import '../../../data/model/order_model.dart';
 import '../../../core/constants/app_color.dart';
 
@@ -25,7 +26,11 @@ class CustomOrderCard extends StatelessWidget {
                         orderModel.ordersStatus == 0
                             ? Colors.pink
                             : orderModel.ordersStatus == 1
-                            ? Colors.lightGreen
+                            ? Colors.deepOrangeAccent
+                            : orderModel.ordersStatus == 2
+                            ? Colors.blueGrey
+                            : orderModel.ordersStatus == 3
+                            ? Colors.green
                             : Colors.red,
                   ),
                   child: Text(
@@ -33,7 +38,11 @@ class CustomOrderCard extends StatelessWidget {
                         ? "pending"
                         : orderModel.ordersStatus == 1
                         ? "prepared"
-                        : "on the way",
+                        : orderModel.ordersStatus == 2
+                        ? "on the way"
+                        : orderModel.ordersStatus == 3
+                        ? "completed"
+                        : "cancelled",
                     style: const TextStyle(color: Colors.white),
                   ),
                 ),
@@ -48,12 +57,22 @@ class CustomOrderCard extends StatelessWidget {
             Text(
               "Payment Method : ${orderModel.ordersPaymentMethod == 0 ? "Cash" : "Payment Cards"}",
             ),
+            Align(
+              alignment: Alignment.centerRight,
+              child: Text(
+                Jiffy.parse(orderModel.ordersCreationTime.toString()).fromNow(),
+                style: const TextStyle(color: AppColor.primaryColorDark),
+              ),
+            ),
             const Divider(thickness: 3),
             Row(
               children: [
                 Text(
                   "Total Price: ${orderModel.ordersPrice}\$",
-                  style: const TextStyle(color: AppColor.primaryColorDark),
+                  style: const TextStyle(
+                    color: AppColor.primaryColorDark,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
                 const Spacer(),
                 ElevatedButton(

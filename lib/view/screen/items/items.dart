@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import '../../../core/constants/app_color.dart';
+import '../../../core/constants/app_routes_names.dart';
 import '../../../core/shared/custom_app_bar.dart';
 import '../../widget/items/custom_items_grid.dart';
 import '../../../core/class/request_handler_view.dart';
@@ -24,7 +25,8 @@ class Items extends StatelessWidget {
                 onPressedSearch: controller.onSearchItems,
                 controller: controller.searchController,
                 title: "75".tr,
-                onPressedIcon: () {},
+                onPressedIcon:
+                    () async => await Get.toNamed(AppRoutesNames.kNotification),
               ),
               const SizedBox(height: 15),
               SizedBox(

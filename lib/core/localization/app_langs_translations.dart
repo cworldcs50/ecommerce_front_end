@@ -128,6 +128,7 @@ class AppLangsTranslations extends Translations {
       "116": "enter coupon code",
       "117": "apply",
       "118": "Checkout",
+      "119" : "notifications"
     },
     "ar": {
       "1": "اختر اللغة",
@@ -250,6 +251,7 @@ class AppLangsTranslations extends Translations {
       "116": "أدخل رمز القسيمة",
       "117": "تطبيق",
       "118": "الدفع",
+      "119" : "الاشعارات"
     },
   };
 }

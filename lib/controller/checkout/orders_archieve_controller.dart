@@ -1,15 +1,15 @@
 import 'package:get/get.dart';
-import '../../core/constants/enums/request_status.dart';
-import '../../core/functions/handling_data.dart';
 import '../../core/services/services.dart';
 import '../../data/model/order_model.dart';
+import '../../core/functions/handling_data.dart';
+import '../../core/constants/enums/request_status.dart';
 import '../../data/datasource/remote/orders/orders_archieve_data.dart';
 
 class OrdersArchieveController extends GetxController {
   late final Services _services;
-  late final OrdersArchieveData _ordersArchieveData;
   late List<OrderModel> orders;
   RequestStatus? requestStatus;
+  late final OrdersArchieveData _ordersArchieveData;
 
   @override
   Future<void> onInit() async {

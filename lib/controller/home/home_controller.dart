@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import '../../core/services/firebase_messaging.dart';
 import '../../data/datasource/remote/search/search.dart';
 import '../../view/screen/profile/profile.dart';
 import '../../data/model/items_model.dart';
@@ -65,9 +66,10 @@ class HomeControllerImp extends HomeController {
   @override
   Future<void> initialData() async {
     isSearch = false;
+    searchController = TextEditingController();
     username = sharedPrefs.getString("user_name")!;
     id = sharedPrefs.getInt("user_id")!;
-    searchController = TextEditingController();
+    await FirebaseMessagingService().fcmInstance.subscribeToTopic("users$id");
   }
 
   @override

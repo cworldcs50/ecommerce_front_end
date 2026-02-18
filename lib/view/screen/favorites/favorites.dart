@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import '../../../core/constants/app_color.dart';
+import '../../../core/constants/app_routes_names.dart';
 import '../../../core/shared/custom_app_bar.dart';
 import '../../../core/class/request_handler_view.dart';
 import '../../widget/favorites/custom_favorites_grid.dart';
@@ -19,7 +20,8 @@ class Favorites extends StatelessWidget {
             children: [
               CustomAppBar(
                 title: "75".tr,
-                onPressedIcon: () {},
+                onPressedIcon:
+                    () async => await Get.toNamed(AppRoutesNames.kNotification),
                 onChanged: controller.checkSearch,
                 controller: controller.searchController,
                 onPressedSearch: controller.onSearchItems,

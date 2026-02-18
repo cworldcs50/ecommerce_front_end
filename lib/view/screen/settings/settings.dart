@@ -24,14 +24,18 @@ class Settings extends GetView<SettingsControllerImp> {
               spacing: 20,
               mainAxisSize: MainAxisSize.min,
               children: [
-                ListTile(
-                  title: Text("95".tr),
-                  trailing: Switch(
-                    value: false,
-                    onChanged: (value) {},
-                    activeColor: AppColor.primaryColorDark,
-                    inactiveThumbColor: Colors.grey.shade600,
-                  ),
+                GetBuilder<SettingsControllerImp>(
+                  builder: (ctrl) {
+                    return ListTile(
+                      title: Text("95".tr),
+                      trailing: Switch(
+                        onChanged: ctrl.notificationController,
+                        value: ctrl.notificationControllerValue,
+                        activeColor: AppColor.primaryColorDark,
+                        inactiveThumbColor: Colors.grey.shade600,
+                      ),
+                    );
+                  },
                 ),
                 ListTile(
                   onTap:

@@ -13,6 +13,7 @@ class AppRoutesNames {
   static const String kAddressAddDetails = "/addressAddPartTwo";
   static const String kAddressEdit = "/addressEdit";
   static const String kLanguage = "/";
+  static const String kNotification = "/notification";
   static const String kAddressView = "/addressView";
   static const String kOnBoarding = "/onBoarding";
   static const String kCheckEmail = "/checkEmail";

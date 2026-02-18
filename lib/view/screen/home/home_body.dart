@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import '../../../core/constants/app_routes_names.dart';
 import '../../../core/shared/custom_app_bar.dart';
 import '../../widget/home/custom_section_title.dart';
 import '../../../controller/home/home_controller.dart';
@@ -26,7 +27,7 @@ class HomeBody extends StatelessWidget {
                 SliverToBoxAdapter(
                   child: CustomAppBar(
                     title: "75".tr,
-                    onPressedIcon: () {},
+                    onPressedIcon: () async =>await  Get.toNamed(AppRoutesNames.kNotification),
                     onFieldSubmitted:
                         (_) async => await controller.onSearchItems(),
                     onChanged: controller.checkSearch,
